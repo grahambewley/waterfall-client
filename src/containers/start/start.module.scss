@@ -14,11 +14,14 @@
     margin: 6rem 0 1rem 0;
 }
 .subhead {
-    margin: 0 0 4rem 0;
+    font-size: 3rem;
+    font-weight: 400;
+    margin: 0 0 6rem 0;
 }
 
 .joinButton,
 .startButton {
+    margin-bottom: 2rem;
     font-size: 2rem;
     text-transform: uppercase;
     border: 2px solid rgba(0,0,0,.1);
@@ -28,7 +31,6 @@
 }
 
 .joinButton {
-    margin-bottom: 2rem;
     background-color: var(--color-blue);
     color: white;
 }

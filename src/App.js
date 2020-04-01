@@ -2,19 +2,22 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from 'react-router-dom';
-import Play from './containers/play/play';
 import Start from './containers/start/start';
+import New from './containers/new/new';
+import Join from './containers/join/join';
+import Play from './containers/play/play';
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route path='/start' component={Start}/>
+        <Route path='/new' component={New}/>
+        <Route path='/join' component={Join}/>
         <Route path='/play' component={Play}/>
-        <Route path='/' component={Play}/>
+        <Route path='/' component={Start}/>
       </Switch>
     </Router>
   )

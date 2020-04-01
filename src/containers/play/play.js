@@ -7,9 +7,8 @@ import PlayColumn from '../../components/playColumn/playColumn';
 
 const Play = () => {
     const [gameStatus, setGameStatus] = React.useState(false);
-    const [endpoint, setEndpoint] = React.useState(baseUrl);
 
-    const socket = socketIOClient(endpoint);
+    const socket = socketIOClient(baseUrl);
 
     React.useEffect(() => {
         // const socket = socketIOClient(endpoint);

@@ -9,6 +9,8 @@ const Start = () => {
 
             <button className={ classes.joinButton }>Join Game</button>
             <button className={ classes.startButton }>Start New Game</button>
+
+            <span role='img' aria-label='beer glasses' style={{fontSize: '6rem'}}>&#127867;</span>
         </div>
     </>)
 }
