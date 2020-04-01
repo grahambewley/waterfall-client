@@ -1,0 +1,52 @@
+.wrapper {
+    grid-column: 2 / span 1;
+    background: var(--color-light-grey);
+    border-left: 3px solid rgba(0,0,0,.01);
+    padding: 6rem 3rem;
+    // box-shadow: -1px 0px 2px 1px rgba(0,0,0,.05);
+
+}
+.playersWrapper {
+    margin-bottom: 4rem;
+}
+.columnHeader {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.player {
+    display: flex;
+    align-items: center;
+}
+.playerName {
+    display: flex;
+    align-items: center;
+    font-size: 2.2rem;
+    line-height: 1;
+    margin: 0 0 .5rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+}
+.playerName.yourTurn {
+    color: white;
+    background-color: var(--color-blue);
+    border: 1px solid rgba(255,255,255,.1);
+}
+.playerIcon {
+    font-size: 1.4rem;
+    color: var(--color-blue);
+    margin-left: 1rem;
+}
+.playerName.yourTurn .playerIcon {
+    color: white;
+}
+
+.ruleList {
+    font-size: 1.6rem;
+    padding-left: 1.2rem;
+}
+
+.noRules {
+    font-size: 1.6rem;
+    color: var(--color-light-black);
+}

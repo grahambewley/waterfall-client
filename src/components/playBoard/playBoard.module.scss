@@ -1,0 +1,36 @@
+.wrapper {
+    grid-column: 1 / span 1;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+}
+
+.pullCardWrapper {
+    margin: 2rem;
+    width: fit-content;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pullCardImage {
+    width: 12rem;
+}
+.pullCardRemaining {
+    font-size: 1.2rem;
+    margin-top: .5rem;
+    font-weight: bold;
+    letter-spacing: .5px;
+}
+
+.lastPulledWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.lastPulledCardImage {
+    width: 16rem;
+}
+.lastPulledCardOutcome {
+    font-size: 2rem;
+}
