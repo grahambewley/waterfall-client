@@ -1,12 +1,16 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import classes from './new.module.scss';
 import baseUrl from '../../utils/baseUrl';
 import axios from 'axios';
+import randomString from 'randomstring';
+import cookie from 'js-cookie';
 
 const New = () => {
     const [formDisabled, setFormDisabled] = React.useState(false);
     const [gameData, setGameData] = React.useState();
-    const [password, setPassword] = React.useState(); // Stored separately so it can be used to join the game after creating
+
+    const history = useHistory();
 
     async function createGame(e) {
         e.preventDefault();
@@ -15,7 +19,6 @@ const New = () => {
         
         const gameName = e.target.elements.gameName.value;
         const password = e.target.elements.gamePassword.value;
-        setPassword(password);
 
         try {
             // Create game and get back game ID
@@ -26,7 +29,6 @@ const New = () => {
             };
             const response = await axios.post(url, payload);
             setGameData(response.data.gameData);
-            console.log(response);
         } catch(error) {
             alert("Sorry, there was an error starting your game: ", error);
         } finally {
@@ -34,28 +36,39 @@ const New = () => {
         }
     }
 
-    async function joinGame(e) {
+    async function addPlayerToGame(e) {
         e.preventDefault();
         
         setFormDisabled(true);
         
         const playerName = e.target.elements.playerName.value;
-        
+        // generate random string to identify this user
+        const playerId = randomString.generate(7);
+
         try {
-            // Join game and get back status (either response or error)
-            const url = `${baseUrl}/joinGame`;
+            // add user to game with name and id
+            const url = `${baseUrl}/addPlayerToGame`;
             const payload = {
                 shortId: gameData.shortId,
-                password,
-                playerName
-            };
+                player_name: playerName,
+                player_id: playerId
+            }
             const response = await axios.post(url, payload);
-            console.log(response);
+
+            // If a newPlayer was returned, then store player name and ID in cookies and load game
+            if(response.data.newPlayer) {
+                cookie.set('player_name', response.data.newPlayer.player_name);
+                cookie.set('player_id', response.data.newPlayer.player_id);
+                cookie.set('shortId', gameData.shortId);
+                history.push('/play');
+            }
+
         } catch(error) {
-            alert("Sorry, there was an error joining the game: ", error);
+            alert("Sorry, there was an error adding you to the game: ", error);
         } finally {
             setFormDisabled(false);
         }
+
     }
 
     return (
@@ -77,7 +90,7 @@ const New = () => {
                     </div>
                 </form>
             :
-                <form disabled={formDisabled} className={classes.form} onSubmit={joinGame}>
+                <form disabled={formDisabled} className={classes.form} onSubmit={addPlayerToGame}>
                     <div className={classes.formItem}>
                         <label className={classes.formLabel} htmlFor='playerName'>Your Display Name</label>
                         <input className={classes.formInput} name='playerName' type='text' placeholder='i.e John'/>
