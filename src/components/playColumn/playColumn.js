@@ -5,13 +5,16 @@ import { faQuestionCircle, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import classes from './playColumn.module.scss';
 
 const PlayColumn = ({ gameStatus }) => {
+    
+    console.log('[PlayColumn] gameStatus is ', gameStatus);
+
     return (
         <div className={classes.wrapper}>
             <div className={classes.playersWrapper}>
                 <h2 className={classes.columnHeader}>Players:</h2>
-                { gameStatus.players.map((player, index) => {
+                    { gameStatus.players.map((player, index) => {
                     let classNames = [classes.playerName];
-                    if(gameStatus.playerTurnIndex === index) {
+                    if(gameStatus.turnIndex === index) {
                         classNames.push(classes.yourTurn);
                     }
 
@@ -19,8 +22,8 @@ const PlayColumn = ({ gameStatus }) => {
                         <div className={classes.player} key={index}>
                             <p className={classNames.join(' ')}>
                                 { player.player_name }
-                                { player.qMaster && <FontAwesomeIcon className={classes.playerIcon} icon={faQuestionCircle}/> }
-                                { player.tMaster && <FontAwesomeIcon className={classes.playerIcon} icon={faThumbsUp}/> }
+                                { player.player_isQmaster && <FontAwesomeIcon className={classes.playerIcon} icon={faQuestionCircle}/> }
+                                { player.player_isTmaster && <FontAwesomeIcon className={classes.playerIcon} icon={faThumbsUp}/> }
                             </p>
                         </div>
                     )

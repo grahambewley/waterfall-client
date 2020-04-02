@@ -8,6 +8,7 @@ import PlayColumn from '../../components/playColumn/playColumn';
 
 const Play = () => {
     const [gameStatus, setGameStatus] = React.useState(false);
+    const [playerId, setPlayerId] = React.useState();
 
     const socket = socketIOClient(baseUrl);
 
@@ -16,6 +17,8 @@ const Play = () => {
         const player_id = cookie.get('player_id');
         const player_name = cookie.get('player_name');
         const shortId = cookie.get('shortId');
+
+        setPlayerId(player_id);
 
         socket.emit('join', { shortId, player_id, player_name }, (response) => {
             if(response.error) {
@@ -31,15 +34,20 @@ const Play = () => {
         });
     }, []);
 
+
     function takeTurn() {
+        // Disable pulling of another card
+        
         const randomIndex = Math.floor(Math.random() * gameStatus.unplayedCards.length);
         const pulledCard = gameStatus.unplayedCards[randomIndex];
-        socket.emit('takeTurn', pulledCard);
+        socket.emit('takeTurn', { shortId: gameStatus.shortId, player_id: playerId, pulledCard });
+
+        // re-enable pulling of cards
     }
 
     return (
         <div className={classes.wrapper}>
-        {gameStatus ? <>
+        { gameStatus ? <>
             <PlayBoard gameStatus={gameStatus} takeTurn={takeTurn}/>
             <PlayColumn gameStatus={gameStatus} />
         </>

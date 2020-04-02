@@ -4,6 +4,7 @@ import cardBack from './cardback.png';
 import cards from './cardImages';
 
 const PlayBoard = ({ gameStatus, takeTurn }) => {
+
     return (
     <div className={classes.wrapper}>
         <div className={classes.pullCardWrapper} onClick={takeTurn}>
