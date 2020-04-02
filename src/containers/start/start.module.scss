@@ -28,6 +28,11 @@
     width: 30rem;
     padding: 1rem;
     border-radius: 500px;
+    cursor: pointer;
+}
+.joinButton:focus,
+.startButton:focus {
+    outline: none;
 }
 
 .joinButton {
