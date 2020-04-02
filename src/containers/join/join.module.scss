@@ -1,0 +1,36 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.header {
+    margin-top: 6rem;
+    font-size: 4rem;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.formItem {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.8rem;
+}
+.formItem:not(:last-child) {
+    margin-bottom: 1.2rem;
+}
+.formLabel {
+    margin-bottom: 1rem;
+    margin-left: .5rem;
+}
+.formInput {
+    font-size: 1.8rem;
+    width: 30rem;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,.1);
+}
+.formButton {
+    padding: 1rem;
+}

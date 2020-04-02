@@ -76,6 +76,7 @@ const Join = () => {
 
     return (
         <div className={classes.wrapper}>
+            <h1 className={classes.header}>Join Existing Game</h1>
             <form disabled={formDisabled} className={classes.form} onSubmit={validateGame}>
                 <div className={classes.formItem}>
                     <label className={classes.formLabel} htmlFor='gameId'>Game ID</label>
