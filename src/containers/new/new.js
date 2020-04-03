@@ -30,6 +30,7 @@ const New = () => {
             const response = await axios.post(url, payload);
             setGameData(response.data.gameData);
         } catch(error) {
+            console.log(error);
             alert("Sorry, there was an error starting your game: ", error);
         } finally {
             setFormDisabled(false);
