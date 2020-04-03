@@ -36,3 +36,12 @@
     font-weight: bold;
     margin-bottom: 2rem;
 }
+
+@media(max-width: 768px) {
+    .wrapper {
+        height: 100%;
+    }
+    .pullCardImage {
+        width: 8rem;
+    }
+}
