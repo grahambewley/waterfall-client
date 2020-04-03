@@ -140,7 +140,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                     <button 
                         onClick={() => setShowNewPlayerInput(true)}
                         className={classes.addPlayerButton}>
-                        Add Player</button>
+                        Add Offline Player</button>
                     }
                 </div>
                 }
