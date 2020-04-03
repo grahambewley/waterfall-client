@@ -5,10 +5,13 @@ import baseUrl from '../../utils/baseUrl';
 import classes from './play.module.scss';
 import PlayBoard from '../../components/playBoard/playBoard';
 import PlayColumn from '../../components/playColumn/playColumn';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const Play = () => {
     const [gameStatus, setGameStatus] = React.useState(false);
     const [playerId, setPlayerId] = React.useState();
+    const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
     const socket = socketIOClient(baseUrl);
 
@@ -47,9 +50,15 @@ const Play = () => {
 
     return (
         <div className={classes.wrapper}>
+            <div className={classes.openSidebar} onClick={ () => setSidebarOpen(true) } >
+                <FontAwesomeIcon icon={faBars} style={{fontSize: '3.5rem'}}/>
+            </div>
         { gameStatus ? <>
             <PlayBoard gameStatus={gameStatus} takeTurn={takeTurn}/>
-            <PlayColumn gameStatus={gameStatus} />
+            <PlayColumn 
+                gameStatus={gameStatus} 
+                sidebarOpen={sidebarOpen}
+                setSidebarOpen={setSidebarOpen}/>
         </>
         : <p>Loading...</p>}
         </div>

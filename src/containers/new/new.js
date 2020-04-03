@@ -98,7 +98,7 @@ const New = () => {
                     </div>
                     
                     <div className={classes.formItem}>
-                        <input className={classes.formButton} type='submit' value='Start'/>
+                         <button className={classes.formButton} type='submit'>Join</button>
                     </div>
                 </form>
             }

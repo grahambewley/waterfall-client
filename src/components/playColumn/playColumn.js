@@ -1,15 +1,21 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faQuestionCircle, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faQuestionCircle, faThumbsUp, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import classes from './playColumn.module.scss';
 
-const PlayColumn = ({ gameStatus }) => {
+const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen }) => {
     
-    console.log('[PlayColumn] gameStatus is ', gameStatus);
-
     return (
-        <div className={classes.wrapper}>
+        <div className={classes.wrapper} style={ sidebarOpen ? {transform:'translateX(0)'} : null } >
+            <div className={classes.closeSidebar} onClick={() => setSidebarOpen(false)}>
+                <FontAwesomeIcon icon={faTimes} style={{fontSize: '3.5rem', color: 'var(--color-blue'}}/>
+            </div>
+            <h1 className={classes.gameName}>{gameStatus.name}</h1>
+            <div className={classes.gameIdWrapper}>
+                <span className={classes.gameIdLabel}>Game ID: </span>
+                <span className={classes.gameId}>{gameStatus.shortId}</span>
+            </div>
             <div className={classes.playersWrapper}>
                 <h2 className={classes.columnHeader}>Players:</h2>
                     { gameStatus.players.map((player, index) => {

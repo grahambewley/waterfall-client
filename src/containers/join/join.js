@@ -80,7 +80,7 @@ const Join = () => {
             <form disabled={formDisabled} className={classes.form} onSubmit={validateGame}>
                 <div className={classes.formItem}>
                     <label className={classes.formLabel} htmlFor='gameId'>Game ID</label>
-                    <input className={classes.formInput} name='gameId' type='text' placeholder='i.e. Happy Hour Club'/>
+                    <input className={classes.formInput} name='gameId' type='text'/>
                 </div>
                 <div className={classes.formItem}>
                     <label className={classes.formLabel} htmlFor='gamePassword'>Password</label>
@@ -90,8 +90,11 @@ const Join = () => {
                     <label className={classes.formLabel} htmlFor='playerName'>Your Display Name</label>
                     <input className={classes.formInput} name='playerName' type='text' placeholder='i.e. John'/>
                 </div>
-                <div className={classes.formItem}>
+                {/* <div className={classes.formItem}>
                     <input className={classes.formButton} type='submit' value='Create'/>
+                </div> */}
+                <div className={classes.formItem}>
+                    <button className={classes.formButton} type='submit'>Join</button>
                 </div>
             </form>
         </div>

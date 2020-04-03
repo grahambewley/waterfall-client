@@ -32,5 +32,11 @@
     border: 1px solid rgba(0,0,0,.1);
 }
 .formButton {
-    padding: 1rem;
+    cursor: pointer;
+    padding: 1rem 3rem;
+    font-size: 1.8rem;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 5px;
+    background-color: #e4f3fd;
+    margin-top: 1rem;
 }

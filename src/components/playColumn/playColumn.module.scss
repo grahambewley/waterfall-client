@@ -4,8 +4,36 @@
     border-left: 3px solid rgba(0,0,0,.01);
     padding: 6rem 3rem;
     // box-shadow: -1px 0px 2px 1px rgba(0,0,0,.05);
-
 }
+.closeSidebar {
+    display: none;
+}
+.gameName {
+    margin-bottom: 2rem;
+    
+}
+.gameIdWrapper {
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: center;
+}
+.gameIdLabel {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 1rem;
+}
+.gameId {
+    font-size: 1.6rem;
+    padding: .5rem;
+    background-color: white;
+    border-radius: 3px;
+    font-family: monospace;
+    color: red;
+    border: 1px solid rgba(0,0,0,.1);
+}
+
 .playersWrapper {
     margin-bottom: 4rem;
 }
@@ -49,4 +77,23 @@
 .noRules {
     font-size: 1.6rem;
     color: var(--color-light-black);
+}
+
+@media(max-width: 768px) {
+    .wrapper {
+        position: absolute;
+        grid-column: none;
+        width: 80%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        transition: all .45s;
+    }
+    .closeSidebar {
+        display: block;
+        position: absolute;
+        top: 2.4rem;
+        right: 2.4rem;
+    }
 }
