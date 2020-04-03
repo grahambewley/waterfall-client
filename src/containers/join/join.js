@@ -15,12 +15,18 @@ const Join = () => {
     async function validateGame(e) {
         e.preventDefault();
         setFormDisabled(true)
+
+        const shortId = e.target.elements.gameId.value;
+        const password = e.target.elements.gamePassword.value;
+        const player_name = e.target.elements.playerName.value;
+        
+        // If this player already has this game stored in cookies, just navigate to /play
+        if(cookie.get('shortId') === shortId) {
+            console.log("You're already in this game");
+            return history.push('/play');
+        }
         
         try {
-            const shortId = e.target.elements.gameId.value;
-            const password = e.target.elements.gamePassword.value;
-            const player_name = e.target.elements.playerName.value;
-        
             const url = `${baseUrl}/validate`;
             const payload = {
                 shortId,
