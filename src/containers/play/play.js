@@ -53,14 +53,16 @@ const Play = () => {
             <div className={classes.openSidebar} onClick={ () => setSidebarOpen(true) } >
                 <FontAwesomeIcon icon={faBars} style={{fontSize: '3.5rem'}}/>
             </div>
-        { gameStatus ? <>
-            <PlayBoard gameStatus={gameStatus} takeTurn={takeTurn}/>
-            <PlayColumn 
-                gameStatus={gameStatus} 
-                sidebarOpen={sidebarOpen}
-                setSidebarOpen={setSidebarOpen}/>
-        </>
-        : <p>Loading...</p>}
+            { gameStatus ? <>
+                <PlayBoard gameStatus={gameStatus} takeTurn={takeTurn}/>
+                <PlayColumn 
+                    gameStatus={gameStatus} 
+                    sidebarOpen={sidebarOpen}
+                    setSidebarOpen={setSidebarOpen}/>
+                
+            </>
+            : <p>Loading...</p>}
+            
         </div>
     );
 }

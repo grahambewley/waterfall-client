@@ -18,6 +18,9 @@ const PlayBoard = ({ gameStatus, takeTurn }) => {
             <img src={cards[gameStatus.lastPulledCard]} alt={`card ${gameStatus.lastPulledCard}`} className={classes.lastPulledCardImage}/>
         </div>
         : null }
+        <div className={classes.playerTurnWrapper}>
+            <span className={classes.playerTurn}>{`${gameStatus.players[gameStatus.turnIndex].player_name}'s Turn`}</span>
+        </div>
     </div>
     );
 } 
