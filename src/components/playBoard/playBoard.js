@@ -6,25 +6,28 @@ import cookie from 'js-cookie';
 
 const PlayBoard = ({ gameStatus, takeTurn }) => {
 
-    const [myTurnIndex, setMyTurnIndex] = React.useState();
     const [yourTurn, setYourTurn] = React.useState(false);
+    const [isAdmin, setIsAdmin] = React.useState(false);
 
     React.useEffect(() => {
-        // When game status updates, find out what turn position you are
+        // When game status updates,
+        // Find out what turn position you are
         console.log('Calculating my turn index, gameStatus is: ', gameStatus);
         const index = gameStatus.players.findIndex((player) => {
             return player.player_id === cookie.get('player_id');
         });
-        console.log("My turn index is " + index);
-        setMyTurnIndex(index);
-
+    
         setYourTurn(index === gameStatus.turnIndex);
+
+        // and find out if you're an admin
+        const isAdmin = gameStatus.players[index].player_isAdmin;
+        setIsAdmin(isAdmin);
 
     }, [gameStatus])
 
 
     function handleCardClick() {
-        if(yourTurn) {
+        if(yourTurn || isAdmin) {
             takeTurn();
         } else {
             alert("Wait for your turn!");
@@ -35,7 +38,7 @@ const PlayBoard = ({ gameStatus, takeTurn }) => {
     <div className={classes.wrapper}>
         
         <div className={classes.pullCardWrapper} onClick={handleCardClick}>
-            <img src={cardBack} className={classes.pullCardImage} alt='playing card back' style={ yourTurn ? null : {filter: 'grayscale(100%)'}}/>
+            <img src={cardBack} className={classes.pullCardImage} alt='playing card back' style={ (yourTurn || isAdmin) ? null : {filter: 'grayscale(100%)'}}/>
             <span className={classes.pullCardRemaining}>{gameStatus.unplayedCards.length} Cards Left</span>
         </div>
 

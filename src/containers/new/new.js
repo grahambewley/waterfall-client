@@ -59,7 +59,8 @@ const New = () => {
             const payload = {
                 shortId: gameData.shortId,
                 player_name: playerName,
-                player_id: playerId
+                player_id: playerId,
+                player_isAdmin: true
             }
             const response = await axios.post(url, payload);
 
