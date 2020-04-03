@@ -10,6 +10,13 @@ const New = () => {
     const [formDisabled, setFormDisabled] = React.useState(false);
     const [gameData, setGameData] = React.useState();
 
+    // React.useEffect(() => {
+    //     //  When this page mounts, remove cookies so user doesn't join the same game again
+    //     cookie.remove('player_name');
+    //     cookie.remove('player_id');
+    //     cookie.remove('shortId');
+    // }, [])
+
     const history = useHistory();
 
     async function createGame(e) {

@@ -90,9 +90,6 @@ const Join = () => {
                     <label className={classes.formLabel} htmlFor='playerName'>Your Display Name</label>
                     <input className={classes.formInput} name='playerName' type='text' placeholder='i.e. John'/>
                 </div>
-                {/* <div className={classes.formItem}>
-                    <input className={classes.formButton} type='submit' value='Create'/>
-                </div> */}
                 <div className={classes.formItem}>
                     <button className={classes.formButton} type='submit'>Join</button>
                 </div>
