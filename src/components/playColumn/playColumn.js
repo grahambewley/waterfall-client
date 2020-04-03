@@ -19,14 +19,9 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen }) => {
             <div className={classes.playersWrapper}>
                 <h2 className={classes.columnHeader}>Players:</h2>
                     { gameStatus.players.map((player, index) => {
-                    let classNames = [classes.playerName];
-                    if(gameStatus.turnIndex === index) {
-                        classNames.push(classes.yourTurn);
-                    }
-
                     return (    
                         <div className={classes.player} key={index}>
-                            <p className={classNames.join(' ')}>
+                            <p className={classes.playerName}>
                                 { player.player_name }
                                 { player.player_isQmaster && <FontAwesomeIcon className={classes.playerIcon} icon={faQuestionCircle}/> }
                                 { player.player_isTmaster && <FontAwesomeIcon className={classes.playerIcon} icon={faThumbsUp}/> }
@@ -35,17 +30,6 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen }) => {
                     )
                 })}
             </div>
-            {/* <div className={classes.rulesWrapper}>
-                <h2 className={classes.columnHeader}>Rules:</h2>
-                { gameStatus.rules.length > 0 ? 
-                    <ol className={classes.ruleList}>
-                    { gameStatus.rules.map((rule, index) => {
-                        return <li key={index} className={classes.ruleItem}>{rule}</li>;
-                    }) }
-                    </ol>
-                    : <p className={classes.noRules}>No rules yet.</p>
-                }
-            </div> */}
         </div>
     );
 }
