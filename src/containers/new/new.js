@@ -10,18 +10,11 @@ const New = () => {
     const [formDisabled, setFormDisabled] = React.useState(false);
     const [gameData, setGameData] = React.useState();
 
-    // React.useEffect(() => {
-    //     //  When this page mounts, remove cookies so user doesn't join the same game again
-    //     cookie.remove('player_name');
-    //     cookie.remove('player_id');
-    //     cookie.remove('shortId');
-    // }, [])
-
     const history = useHistory();
 
     async function createGame(e) {
         e.preventDefault();
-        
+        //document.getElementById('createGameForm').reset();
         setFormDisabled(true);
         
         const gameName = e.target.elements.gameName.value;
@@ -85,13 +78,13 @@ const New = () => {
             <h1 className={classes.header}>Start New Game</h1>
 
             { !gameData ? 
-                <form disabled={formDisabled} className={classes.form} onSubmit={createGame}>
+                <form disabled={formDisabled} className={classes.form} id='createGameForm' onSubmit={createGame}>
                     <div className={classes.formItem}>
                         <label className={classes.formLabel} htmlFor='gameName'>Game Name</label>
                         <input className={classes.formInput} name='gameName' type='text' placeholder='i.e. Happy Hour Club'/>
                     </div>
                     <div className={classes.formItem}>
-                        <label className={classes.formLabel} htmlFor='gamePassword'>Password (required to enter game)</label>
+                        <label className={classes.formLabel} htmlFor='gamePassword'>Game Password</label>
                         <input className={classes.formInput} name='gamePassword' type='password'/>
                     </div>
                     <div className={classes.formItem}>
@@ -99,7 +92,7 @@ const New = () => {
                     </div>
                 </form>
             :
-                <form disabled={formDisabled} className={classes.form} onSubmit={addPlayerToGame}>
+                <form disabled={formDisabled} className={classes.form} id='addPlayerForm' onSubmit={addPlayerToGame}>
                     <div className={classes.formItem}>
                         <label className={classes.formLabel} htmlFor='playerName'>Your Display Name</label>
                         <input className={classes.formInput} name='playerName' type='text' placeholder='i.e John'/>

@@ -5,7 +5,11 @@
     align-items: center;
     padding: 2rem;
 }
-
+.tooltipWrapper {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+}
 .header,
 .subhead {
     color: var(--color-light-black);
