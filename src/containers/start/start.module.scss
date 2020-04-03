@@ -3,11 +3,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 2rem;
 }
 
 .header,
 .subhead {
     color: var(--color-light-black);
+    text-align: center;
 }
 .header {
     font-size: 6rem;

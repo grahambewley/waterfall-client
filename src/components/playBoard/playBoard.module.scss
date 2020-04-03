@@ -35,6 +35,7 @@
     font-size: 2.4rem;
     font-weight: bold;
     margin-bottom: 2rem;
+    text-align: center;
 }
 
 @media(max-width: 768px) {
@@ -43,5 +44,11 @@
     }
     .pullCardImage {
         width: 8rem;
+    }
+    .lastPulledCardImage {
+        width: 50%;
+    }
+    .lastPulledCardOutcome {
+        margin: 2rem;
     }
 }
