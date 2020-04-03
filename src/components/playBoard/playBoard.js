@@ -2,29 +2,8 @@ import React from 'react';
 import classes from './playBoard.module.scss';
 import cardBack from './cardback.png';
 import cards from './cardImages';
-import cookie from 'js-cookie';
 
-const PlayBoard = ({ gameStatus, takeTurn }) => {
-
-    const [yourTurn, setYourTurn] = React.useState(false);
-    const [isAdmin, setIsAdmin] = React.useState(false);
-
-    React.useEffect(() => {
-        // When game status updates,
-        // Find out what turn position you are
-        console.log('Calculating my turn index, gameStatus is: ', gameStatus);
-        const index = gameStatus.players.findIndex((player) => {
-            return player.player_id === cookie.get('player_id');
-        });
-    
-        setYourTurn(index === gameStatus.turnIndex);
-
-        // and find out if you're an admin
-        const isAdmin = gameStatus.players[index].player_isAdmin;
-        setIsAdmin(isAdmin);
-
-    }, [gameStatus])
-
+const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn }) => {
 
     function handleCardClick() {
         if(yourTurn || isAdmin) {

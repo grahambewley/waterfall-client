@@ -1,0 +1,65 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.modal {
+    background-color: #fafafa;
+    padding: 2rem;
+    border-radius: 5px;
+
+    &__header {
+        font-size: 2.4rem;
+        margin: 0 0 2rem 0;
+        font-weight: 600;
+    }
+
+    &__text {
+        font-size: 1.6rem;
+        margin-bottom: 4rem;
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__actions button:not(:last-child) {
+        margin-right: 1rem;
+    }
+
+    &__normalAction {
+        cursor: pointer;
+        padding: 1rem 3rem;
+        font-size: 1.8rem;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: 5px;
+        background-color: #e5e5e5;
+    }
+
+    &__affirmativeAction {
+        cursor: pointer;
+        padding: 1rem 3rem;
+        font-size: 1.8rem;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: 5px;
+        background-color: #e5e5e5;
+    }
+
+    &__negativeAction {
+        cursor: pointer;
+        padding: 1rem 3rem;
+        font-size: 1.8rem;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: 5px;
+        background-color: #fce0df;
+    }
+}

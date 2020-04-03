@@ -21,10 +21,9 @@ const Join = () => {
         const player_name = e.target.elements.playerName.value;
         
         // If this player already has this game stored in cookies, just navigate to /play
-        if(cookie.get('shortId') === shortId) {
-            console.log("You're already in this game");
-            return history.push('/play');
-        }
+        // if(cookie.get('shortId') === shortId) {
+        //     return history.push('/play');
+        // }
         
         try {
             const url = `${baseUrl}/validate`;
