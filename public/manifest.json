@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Waterfall",
+  "name": "Waterfall - The Drinking Game: Online",
   
   "start_url": ".",
   "display": "standalone",
