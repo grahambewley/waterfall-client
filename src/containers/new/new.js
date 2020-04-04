@@ -14,9 +14,9 @@ const New = () => {
 
     async function createGame(e) {
         e.preventDefault();
-        //document.getElementById('createGameForm').reset();
         setFormDisabled(true);
-        
+        //document.getElementById('createGameForm').reset();
+
         const gameName = e.target.elements.gameName.value;
         const password = e.target.elements.gamePassword.value;
 

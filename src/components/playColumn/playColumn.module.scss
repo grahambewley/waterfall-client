@@ -50,51 +50,53 @@
     color: white;
 }
 
-.ruleList {
-    font-size: 1.6rem;
-    padding-left: 1.2rem;
-}
-
-.noRules {
-    font-size: 1.6rem;
-    color: var(--color-light-black);
-}
-
 .adminControls {
     display: flex;
     align-items: center;
 }
 .adminControl {
     font-size: 1.4rem;
+    color: #666;
     cursor: pointer;
 }
+.adminControl:not(:last-child) {
+    margin-right: .5rem;
+}
 
-.addPlayerWrapper {
+.addPlayerWrapper,
+.addRuleWrapper {
     margin-top: 2rem;
 }
-.addPlayerInputWrapper {
+.addPlayerInputWrapper,
+.addRuleInputWrapper {
     display: grid;
     grid-template-columns: 1fr min-content min-content;
     grid-gap: .5rem;
 }
-.addPlayerInput {
+.addPlayerInput,
+.addRuleInput {
     padding: .5rem;
     font-size: 1.8rem;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: 5px;
     background-color: #fafafa;
 }
-.addPlayerSmallButton {
+.addPlayerSmallButton,
+.addRuleSmallButton {
     border-radius: 5px;
     border: 1px solid rgba(0,0,0,.2);
     width: 3rem;
 }
 .addPlayerInput:focus,
 .addPlayerButton:focus,
-.addPlayerSmallButton:focus {
+.addPlayerSmallButton:focus,
+.addRuleInput:focus,
+.addRuleButton:focus,
+.addRuleSmallButton:focus {
     outline: none;
 }
-.addPlayerButton {
+.addPlayerButton,
+.addRuleButton {
     width: 100%;
     cursor: pointer;
     padding: .5rem 3rem;
@@ -102,6 +104,18 @@
     border: 1px solid rgba(0,0,0,.2);
     border-radius: 200px;
     background-color: #fafafa;
+}
+
+.rulesList {
+    padding-left: 2rem;
+}
+.rule {
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+}
+.rule:not(:last-child) {
+    margin-bottom: 1rem;
 }
 .gameIdWrapper {
     position: absolute;
