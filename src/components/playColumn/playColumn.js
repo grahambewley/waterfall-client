@@ -273,8 +273,11 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                 }
             </div>
             <div className={classes.gameIdWrapper}>
-                <span className={classes.gameIdLabel}>Game ID: </span>
-                <span className={classes.gameId}>{gameStatus.shortId}</span>
+                <p className={classes.gameIdLine}>
+                    <span className={classes.gameIdLabel}>Game ID: </span>
+                    <span className={classes.gameId}>{gameStatus.shortId}</span>
+                </p>
+                <p className={classes.gameIdTip}>(Share this with your friends)</p>
             </div>
         </div>
     );

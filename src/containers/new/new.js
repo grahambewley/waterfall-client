@@ -9,6 +9,7 @@ import cookie from 'js-cookie';
 const New = () => {
     const [formDisabled, setFormDisabled] = React.useState(false);
     const [gameData, setGameData] = React.useState();
+    const [playerName, setPlayerName] = React.useState('');
 
     const history = useHistory();
 
@@ -95,7 +96,13 @@ const New = () => {
                 <form disabled={formDisabled} className={classes.form} id='addPlayerForm' onSubmit={addPlayerToGame}>
                     <div className={classes.formItem}>
                         <label className={classes.formLabel} htmlFor='playerName'>Your Display Name</label>
-                        <input className={classes.formInput} name='playerName' type='text' placeholder='i.e John'/>
+                        <input 
+                            className={classes.formInput} 
+                            name='playerName' 
+                            value={playerName} 
+                            onChange={(e) => setPlayerName(e.target.value)}
+                            type='text' 
+                            placeholder='i.e John'/>
                     </div>
                     
                     <div className={classes.formItem}>

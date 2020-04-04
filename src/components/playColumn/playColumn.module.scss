@@ -119,13 +119,15 @@
 }
 .gameIdWrapper {
     position: absolute;
+    width: fit-content;
     bottom: 4rem;
     left: 50%;
     transform: translateX(-50%);
-
+}
+.gameIdLine {
     display: flex;
     align-items: center;
-    
+    justify-content: center;;
 }
 .gameIdLabel {
     font-size: 1.4rem;
@@ -142,6 +144,12 @@
     font-family: monospace;
     color: red;
     border: 1px solid rgba(0,0,0,.1);
+}
+.gameIdTip {
+    font-size: 1.4rem;
+    color: #666;
+    font-family: monospace;
+    margin: 0;
 }
 
 @media(max-width: 768px) {
