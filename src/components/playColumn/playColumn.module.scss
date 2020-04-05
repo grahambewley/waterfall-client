@@ -4,6 +4,7 @@
     border-left: 3px solid rgba(0,0,0,.01);
     padding: 4rem 3rem;
     position: relative;
+    overflow-y: scroll;
 }
 .closeSidebar {
     display: none;
@@ -12,8 +13,8 @@
     margin-bottom: 2rem;
 }
 
-
-.playersWrapper {
+.playersWrapper,
+.rulesWrapper {
     margin-bottom: 4rem;
 }
 .columnHeader {
@@ -121,11 +122,7 @@
     margin-bottom: 1rem;
 }
 .gameIdWrapper {
-    position: absolute;
-    width: fit-content;
-    bottom: 4rem;
-    left: 50%;
-    transform: translateX(-50%);
+    
 }
 .gameIdLine {
     display: flex;
@@ -153,6 +150,7 @@
     color: #666;
     font-family: monospace;
     margin: 0;
+    text-align: center;
 }
 
 @media(max-width: 768px) {
