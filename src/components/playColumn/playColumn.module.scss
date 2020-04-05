@@ -66,36 +66,39 @@
 .addRuleWrapper {
     margin-top: 2rem;
 }
-.addPlayerInputWrapper,
+.addInputWrapper,
 .addRuleInputWrapper {
     display: grid;
-    grid-template-columns: 1fr min-content min-content;
-    grid-gap: .5rem;
+    grid-template-rows: min-content min-content;
+    grid-gap: 1rem;
 }
-.addPlayerInput,
-.addRuleInput {
-    padding: .5rem;
-    font-size: 1.8rem;
+.addInput {
+    grid-row: 1 / span 1;
+    padding: 1rem;
+    font-size: 2rem;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: 5px;
     background-color: #fafafa;
 }
-.addPlayerSmallButton,
-.addRuleSmallButton {
+.smallButtonWrapper {
+    grid-row: 2 / span 1;
+}
+.addSmallButton {
+    font-size: 1.4rem;
     border-radius: 5px;
     border: 1px solid rgba(0,0,0,.2);
-    width: 3rem;
+    width: 6rem;
+    height: 3rem;
 }
-.addPlayerInput:focus,
-.addPlayerButton:focus,
-.addPlayerSmallButton:focus,
-.addRuleInput:focus,
-.addRuleButton:focus,
-.addRuleSmallButton:focus {
+.addSmallButton:not(:last-child) {
+    margin-right: 1rem;
+}
+.addInput:focus,
+.addButton:focus,
+.addSmallButton:focus {
     outline: none;
 }
-.addPlayerButton,
-.addRuleButton {
+.addButton {
     width: 100%;
     cursor: pointer;
     padding: .5rem 3rem;

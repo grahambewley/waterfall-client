@@ -100,10 +100,6 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
         }
     }
 
-    function handleNewPlayerChange(e) {
-        setNewOfflinePlayer(e.target.value);
-    }
-
     async function handleAddOfflinePlayer() {
         setFormDisabled(true);
         
@@ -121,6 +117,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
             }
             const response = await axios.post(url, payload);
             setShowNewPlayerInput(false);
+            setNewOfflinePlayer('');
             transmitGameStatus();
         } catch(error) {
             alert("Sorry, there was an error adding you to the game: ", error);
@@ -129,13 +126,8 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
         }
     }
 
-    function handleNewRuleChange(e) {
-        setNewRule(e.target.value);
-    }
-
     async function handleAddRule() {
         setFormDisabled(true);
-        
         try {
             // add rule to game
             const url = `${baseUrl}/addRuleToGame`;
@@ -145,6 +137,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
             }
             const response = await axios.post(url, payload);
             setShowNewRuleInput(false);
+            setNewRule('');
             transmitGameStatus();
         } catch(error) {
             alert("Sorry, there was an error adding the rule: ", error);
@@ -190,34 +183,35 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                 { isAdmin && 
                 <div className={classes.addPlayerWrapper}>
                     { showNewPlayerInput ?
-                    <div className={classes.addPlayerInputWrapper}>
+                    <div className={classes.addInputWrapper}>
                         <input 
                             disabled={formDisabled}
-                            className={classes.addPlayerInput}
+                            className={classes.addInput}
                             value={newOfflinePlayer}
-                            onChange={handleNewPlayerChange}
+                            onChange={(e) => setNewOfflinePlayer(e.target.value)}
                             type='text' 
                             placeholder='Player Name'/>
-                        <button 
-                            disabled={formDisabled}
-                            style={{backgroundColor: 'rgba(122, 229, 130, .2)'}}
-                            className={classes.addPlayerSmallButton}
-                            onClick={handleAddOfflinePlayer}>
-                            <FontAwesomeIcon icon={faCheck}/>
-                        </button>
-                        <button 
-                            disabled={formDisabled}
-                            style={{backgroundColor: 'rgba(219, 22, 47, .2)'}}
-                            className={classes.addPlayerSmallButton} 
-                            onClick={() => setShowNewPlayerInput(false)}>
-                            <FontAwesomeIcon icon={faTimes}/>
-                        </button>
-                        
+                        <div className={classes.smallButtonWrapper}>
+                            <button 
+                                disabled={formDisabled}
+                                style={{backgroundColor: 'rgba(122, 229, 130, .2)'}}
+                                className={classes.addSmallButton}
+                                onClick={handleAddOfflinePlayer}>
+                                <FontAwesomeIcon icon={faCheck}/>
+                            </button>
+                            <button 
+                                disabled={formDisabled}
+                                style={{backgroundColor: 'rgba(219, 22, 47, .2)'}}
+                                className={classes.addSmallButton} 
+                                onClick={() => setShowNewPlayerInput(false)}>
+                                <FontAwesomeIcon icon={faTimes}/>
+                            </button>
+                        </div>
                     </div>
                     : 
                     <button 
                         onClick={() => setShowNewPlayerInput(true)}
-                        className={classes.addPlayerButton}>
+                        className={classes.addButton}>
                         Add Offline Player</button>
                     }
                 </div>
@@ -243,34 +237,35 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                 { isAdmin && 
                 <div className={classes.addRuleWrapper}>
                     { showNewRuleInput ?
-                    <div className={classes.addRuleInputWrapper}>
+                    <div className={classes.addInputWrapper}>
                         <input 
                             disabled={formDisabled}
-                            className={classes.addRuleInput}
+                            className={classes.addInput}
                             value={newRule}
-                            onChange={handleNewRuleChange}
+                            onChange={(e) => setNewRule(e.target.value) }
                             type='text' 
                             placeholder='Rule'/>
-                        <button 
-                            disabled={formDisabled}
-                            style={{backgroundColor: 'rgba(122, 229, 130, .2)'}}
-                            className={classes.addRuleSmallButton}
-                            onClick={handleAddRule}>
-                            <FontAwesomeIcon icon={faCheck}/>
-                        </button>
-                        <button 
-                            disabled={formDisabled}
-                            style={{backgroundColor: 'rgba(219, 22, 47, .2)'}}
-                            className={classes.addRuleSmallButton} 
-                            onClick={() => setShowNewRuleInput(false)}>
-                            <FontAwesomeIcon icon={faTimes}/>
-                        </button>
-                        
+                        <div className={classes.smallButtonWrapper}>
+                            <button 
+                                disabled={formDisabled}
+                                style={{backgroundColor: 'rgba(122, 229, 130, .2)'}}
+                                className={classes.addSmallButton}
+                                onClick={handleAddRule}>
+                                <FontAwesomeIcon icon={faCheck}/>
+                            </button>
+                            <button 
+                                disabled={formDisabled}
+                                style={{backgroundColor: 'rgba(219, 22, 47, .2)'}}
+                                className={classes.addSmallButton} 
+                                onClick={() => setShowNewRuleInput(false)}>
+                                <FontAwesomeIcon icon={faTimes}/>
+                            </button>
+                        </div>
                     </div>
                     : 
                     <button 
                         onClick={() => setShowNewRuleInput(true)}
-                        className={classes.addRuleButton}>
+                        className={classes.addButton}>
                         Add Rule</button>
                     }
                 </div>
