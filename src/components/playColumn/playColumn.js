@@ -7,7 +7,7 @@ import { faQuestionCircle, faThumbsUp, faTimes, faCheck, faUserSlash, faArrowUp,
 
 import classes from './playColumn.module.scss';
 
-const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleShowModal, hideModal }) => {
+const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleShowModal, hideModal, transmitGameStatus }) => {
     
     const [showNewPlayerInput, setShowNewPlayerInput] = React.useState(false);
     const [newOfflinePlayer, setNewOfflinePlayer] = React.useState('');
@@ -76,7 +76,8 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                 player_id
             }
             const response = await axios.post(url, payload);
-            hideModal();            
+            hideModal();
+            transmitGameStatus();           
         } catch(error) {
             alert("Sorry, there was an error removing that player from the game: ", error);
         }
@@ -92,7 +93,8 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
             }
             const response = await axios.post(url, payload);
 
-            hideModal();            
+            hideModal();      
+            transmitGameStatus();      
         } catch(error) {
             alert("Sorry, there was an error removing that rule from the game: ", error);
         }
@@ -103,7 +105,6 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
     }
 
     async function handleAddOfflinePlayer() {
-        console.log("Adding offline player " + newOfflinePlayer);
         setFormDisabled(true);
         
         // generate random string to identify this user
@@ -119,8 +120,8 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                 player_isOffline: true
             }
             const response = await axios.post(url, payload);
-            console.log("Response from adding offline player: ", response);
             setShowNewPlayerInput(false);
+            transmitGameStatus();
         } catch(error) {
             alert("Sorry, there was an error adding you to the game: ", error);
         } finally {
@@ -133,7 +134,6 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
     }
 
     async function handleAddRule() {
-        console.log("Adding rule " + newRule);
         setFormDisabled(true);
         
         try {
@@ -144,8 +144,8 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                 rule: newRule
             }
             const response = await axios.post(url, payload);
-            console.log("Response from adding rule: ", response);
             setShowNewRuleInput(false);
+            transmitGameStatus();
         } catch(error) {
             alert("Sorry, there was an error adding the rule: ", error);
         } finally {

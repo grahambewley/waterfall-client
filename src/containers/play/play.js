@@ -21,7 +21,6 @@ const Play = () => {
     const socket = socketIOClient(baseUrl);
 
     React.useEffect(() => {
-        console.log("Play component mounted or updated");
         // On mount, join game using data from cookies
         const player_id = cookie.get('player_id');
         const player_name = cookie.get('player_name');
@@ -45,8 +44,6 @@ const Play = () => {
 
     React.useEffect(() => {
         if(gameStatus) {
-            console.log("Game status set or updated: ", gameStatus);
-
             // Find out what turn position you are
             const index = gameStatus.players.findIndex((player) => {
                 return player.player_id === cookie.get('player_id');
@@ -73,6 +70,10 @@ const Play = () => {
             const pulledCard = gameStatus.unplayedCards[randomIndex];
             socket.emit('takeTurn', { shortId: gameStatus.shortId, player_id: playerId, pulledCard });
         } 
+    }
+
+    function transmitGameStatus() {
+        socket.emit('transmitGameStatus', { shortId: gameStatus.shortId });
     }
 
     function handleShowModal(modalContent) {
@@ -103,7 +104,8 @@ const Play = () => {
                     setSidebarOpen={setSidebarOpen}
                     isAdmin={isAdmin}
                     handleShowModal={handleShowModal}
-                    hideModal={hideModal}/>
+                    hideModal={hideModal}
+                    transmitGameStatus={transmitGameStatus}/>
                 
             </>
             : <p>Loading...</p>}
