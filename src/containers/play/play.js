@@ -122,7 +122,9 @@ const Play = () => {
                     gameStatus={gameStatus} 
                     takeTurn={takeTurn}
                     isAdmin={isAdmin}
-                    yourTurn={yourTurn}/>
+                    yourTurn={yourTurn}
+                    handleShowModal={handleShowModal}
+                    hideModal={hideModal}/>
                 <PlayColumn 
                     gameStatus={gameStatus} 
                     sidebarOpen={sidebarOpen}

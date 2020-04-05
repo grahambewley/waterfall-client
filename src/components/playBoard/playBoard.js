@@ -3,13 +3,27 @@ import classes from './playBoard.module.scss';
 import cardBack from './cardback.png';
 import cards from './cardImages';
 
-const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn }) => {
+const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn, handleShowModal, hideModal}) => {
 
     function handleCardClick() {
         if(yourTurn || isAdmin) {
             takeTurn();
         } else {
-            alert("Wait for your turn!");
+            const header = "Wait your turn!";
+            const text = `When it's your turn, you'll be able to draw a card`;
+            const normal = {
+                action: () => {
+                    hideModal();
+                },
+                text: "Got It"
+            };
+
+            const modalContent = {
+                header,
+                text,
+                normal
+            }
+            handleShowModal(modalContent);
         }
     }
 
