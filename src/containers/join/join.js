@@ -85,7 +85,7 @@ const Join = () => {
             <form disabled={formDisabled} className={classes.form} onSubmit={validateGame}>
                 <div className={classes.formItem}>
                     <label className={classes.formLabel} htmlFor='gameId'>Game ID</label>
-                    <input className={classes.formInput} name='gameId' type='text' placeholder='5 character code'/>
+                    <input className={classes.formInput} style={{fontFamily: 'monospace'}} name='gameId' type='text' placeholder='5 character code'/>
                 </div>
                 <div className={classes.formItem}>
                     <label className={classes.formLabel} htmlFor='gamePassword'>Password</label>

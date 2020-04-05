@@ -40,6 +40,31 @@ const Play = () => {
         socket.on("currentGameStatus", gameStatus => {
             setGameStatus(gameStatus);
         });
+
+        // If intro modal cookie is present (if client created the game), show modal with Game ID
+        const showIntroModal = cookie.get('showIntroModal');
+
+        if(showIntroModal) {
+            const header = "Welcome to your Waterfall game!";
+            const text = `For other players to join your game, you'll need to share with them the password you set, and the Game ID below (this is also in the menu column if you need it later).`;
+            const gameId = shortId;
+            const normal = {
+                action: () => {
+                    cookie.remove('showIntroModal');
+                    hideModal();
+                },
+                text: "Got It"
+            };
+
+            const modalContent = {
+                header,
+                text,
+                gameId,
+                normal
+            }
+
+            handleShowModal(modalContent);
+        }
     }, []);
 
     React.useEffect(() => {

@@ -151,125 +151,127 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
             <div className={classes.closeSidebar} onClick={() => setSidebarOpen(false)}>
                 <FontAwesomeIcon icon={faTimes} style={{fontSize: '3.5rem', color: 'var(--color-blue'}}/>
             </div>
-            <h1 className={classes.gameName}>{gameStatus.name}</h1>
-            <div className={classes.playersWrapper}>
-                <h2 className={classes.columnHeader}>Players:</h2>
-                    { gameStatus.players.map((player, index) => {
-                    return (    
-                        <div className={classes.player} key={index}>
-                            <p className={classes.playerName}>
-                                { player.player_name }
-                                { player.player_isOffline && <FontAwesomeIcon style={{color: '#aaa', fontSize:'1.4rem'}} className={classes.playerIcon} icon={faUserSlash}/>}
-                                { player.player_isQmaster && <FontAwesomeIcon className={classes.playerIcon} icon={faQuestionCircle}/> }
-                                { player.player_isTmaster && <FontAwesomeIcon className={classes.playerIcon} icon={faThumbsUp}/> }
-                            </p>
+            <div>
+                <h1 className={classes.gameName}>{gameStatus.name}</h1>
+                <div className={classes.playersWrapper}>
+                    <h2 className={classes.columnHeader}>Players:</h2>
+                        { gameStatus.players.map((player, index) => {
+                        return (    
+                            <div className={classes.player} key={index}>
+                                <p className={classes.playerName}>
+                                    { player.player_name }
+                                    { player.player_isOffline && <FontAwesomeIcon style={{color: '#aaa', fontSize:'1.4rem'}} className={classes.playerIcon} icon={faUserSlash}/>}
+                                    { player.player_isQmaster && <FontAwesomeIcon className={classes.playerIcon} icon={faQuestionCircle}/> }
+                                    { player.player_isTmaster && <FontAwesomeIcon className={classes.playerIcon} icon={faThumbsUp}/> }
+                                </p>
 
-                            { isAdmin && 
-                                <div className={classes.adminControls}>
-                                    <div className={classes.adminControl} onClick={() => movePlayerDown(player.player_id)}>
-                                        <FontAwesomeIcon icon={faArrowDown}/>
+                                { isAdmin && 
+                                    <div className={classes.adminControls}>
+                                        <div className={classes.adminControl} onClick={() => movePlayerDown(player.player_id)}>
+                                            <FontAwesomeIcon icon={faArrowDown}/>
+                                        </div>
+                                        <div className={classes.adminControl} onClick={() => movePlayerUp(player.player_id)}>
+                                            <FontAwesomeIcon icon={faArrowUp}/>
+                                        </div>
+                                        <div className={classes.adminControl} onClick={() => removePlayerModal(player.player_id, player.player_name)}>
+                                            <FontAwesomeIcon icon={faTimes}/>
+                                        </div>
                                     </div>
-                                    <div className={classes.adminControl} onClick={() => movePlayerUp(player.player_id)}>
-                                        <FontAwesomeIcon icon={faArrowUp}/>
-                                    </div>
-                                    <div className={classes.adminControl} onClick={() => removePlayerModal(player.player_id, player.player_name)}>
-                                        <FontAwesomeIcon icon={faTimes}/>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    )
-                })}
-                { isAdmin && 
-                <div className={classes.addPlayerWrapper}>
-                    { showNewPlayerInput ?
-                    <div className={classes.addInputWrapper}>
-                        <input 
-                            disabled={formDisabled}
-                            className={classes.addInput}
-                            value={newOfflinePlayer}
-                            onChange={(e) => setNewOfflinePlayer(e.target.value)}
-                            type='text' 
-                            placeholder='Player Name'/>
-                        <div className={classes.smallButtonWrapper}>
-                            <button 
-                                disabled={formDisabled}
-                                style={{backgroundColor: 'rgba(122, 229, 130, .2)'}}
-                                className={classes.addSmallButton}
-                                onClick={handleAddOfflinePlayer}>
-                                <FontAwesomeIcon icon={faCheck}/>
-                            </button>
-                            <button 
-                                disabled={formDisabled}
-                                style={{backgroundColor: 'rgba(219, 22, 47, .2)'}}
-                                className={classes.addSmallButton} 
-                                onClick={() => setShowNewPlayerInput(false)}>
-                                <FontAwesomeIcon icon={faTimes}/>
-                            </button>
-                        </div>
-                    </div>
-                    : 
-                    <button 
-                        onClick={() => setShowNewPlayerInput(true)}
-                        className={classes.addButton}>
-                        Add Offline Player</button>
-                    }
-                </div>
-                }
-            </div>
-            <div className={classes.rulesWrapper}>
-                <h2 className={classes.columnHeader}>Rules:</h2>
-                
-                {gameStatus.rules.length === 0 ?
-                    <p className={classes.noRules}>No rules yet</p>
-                : 
-                    gameStatus.rules.map((rule, index) => {
-                        return <p className={classes.rule}>
-                            <span>{ rule }</span>
-                            { isAdmin && 
-                                <span style={{marginLeft: '1rem'}} className={classes.adminControl} onClick={() => removeRuleModal(rule)}>
-                                    <FontAwesomeIcon icon={faTimes}/>
-                                </span>
-                            }
-                        </p>;
+                                }
+                            </div>
+                        )
                     })}
-                
-                { isAdmin && 
-                <div className={classes.addRuleWrapper}>
-                    { showNewRuleInput ?
-                    <div className={classes.addInputWrapper}>
-                        <input 
-                            disabled={formDisabled}
-                            className={classes.addInput}
-                            value={newRule}
-                            onChange={(e) => setNewRule(e.target.value) }
-                            type='text' 
-                            placeholder='Rule'/>
-                        <div className={classes.smallButtonWrapper}>
-                            <button 
+                    { isAdmin && 
+                    <div className={classes.addPlayerWrapper}>
+                        { showNewPlayerInput ?
+                        <div className={classes.addInputWrapper}>
+                            <input 
                                 disabled={formDisabled}
-                                style={{backgroundColor: 'rgba(122, 229, 130, .2)'}}
-                                className={classes.addSmallButton}
-                                onClick={handleAddRule}>
-                                <FontAwesomeIcon icon={faCheck}/>
-                            </button>
-                            <button 
-                                disabled={formDisabled}
-                                style={{backgroundColor: 'rgba(219, 22, 47, .2)'}}
-                                className={classes.addSmallButton} 
-                                onClick={() => setShowNewRuleInput(false)}>
-                                <FontAwesomeIcon icon={faTimes}/>
-                            </button>
+                                className={classes.addInput}
+                                value={newOfflinePlayer}
+                                onChange={(e) => setNewOfflinePlayer(e.target.value)}
+                                type='text' 
+                                placeholder='Player Name'/>
+                            <div className={classes.smallButtonWrapper}>
+                                <button 
+                                    disabled={formDisabled}
+                                    style={{backgroundColor: 'rgba(122, 229, 130, .2)'}}
+                                    className={classes.addSmallButton}
+                                    onClick={handleAddOfflinePlayer}>
+                                    <FontAwesomeIcon icon={faCheck}/>
+                                </button>
+                                <button 
+                                    disabled={formDisabled}
+                                    style={{backgroundColor: 'rgba(219, 22, 47, .2)'}}
+                                    className={classes.addSmallButton} 
+                                    onClick={() => setShowNewPlayerInput(false)}>
+                                    <FontAwesomeIcon icon={faTimes}/>
+                                </button>
+                            </div>
                         </div>
+                        : 
+                        <button 
+                            onClick={() => setShowNewPlayerInput(true)}
+                            className={classes.addButton}>
+                            Add Offline Player</button>
+                        }
                     </div>
-                    : 
-                    <button 
-                        onClick={() => setShowNewRuleInput(true)}
-                        className={classes.addButton}>
-                        Add Rule</button>
                     }
                 </div>
-                }
+                <div className={classes.rulesWrapper}>
+                    <h2 className={classes.columnHeader}>Rules:</h2>
+                    
+                    {gameStatus.rules.length === 0 ?
+                        <p className={classes.noRules}>No rules yet</p>
+                    : 
+                        gameStatus.rules.map((rule, index) => {
+                            return <p className={classes.rule}>
+                                <span>{ rule }</span>
+                                { isAdmin && 
+                                    <span style={{marginLeft: '1rem'}} className={classes.adminControl} onClick={() => removeRuleModal(rule)}>
+                                        <FontAwesomeIcon icon={faTimes}/>
+                                    </span>
+                                }
+                            </p>;
+                        })}
+                    
+                    { isAdmin && 
+                    <div className={classes.addRuleWrapper}>
+                        { showNewRuleInput ?
+                        <div className={classes.addInputWrapper}>
+                            <input 
+                                disabled={formDisabled}
+                                className={classes.addInput}
+                                value={newRule}
+                                onChange={(e) => setNewRule(e.target.value) }
+                                type='text' 
+                                placeholder='Rule'/>
+                            <div className={classes.smallButtonWrapper}>
+                                <button 
+                                    disabled={formDisabled}
+                                    style={{backgroundColor: 'rgba(122, 229, 130, .2)'}}
+                                    className={classes.addSmallButton}
+                                    onClick={handleAddRule}>
+                                    <FontAwesomeIcon icon={faCheck}/>
+                                </button>
+                                <button 
+                                    disabled={formDisabled}
+                                    style={{backgroundColor: 'rgba(219, 22, 47, .2)'}}
+                                    className={classes.addSmallButton} 
+                                    onClick={() => setShowNewRuleInput(false)}>
+                                    <FontAwesomeIcon icon={faTimes}/>
+                                </button>
+                            </div>
+                        </div>
+                        : 
+                        <button 
+                            onClick={() => setShowNewRuleInput(true)}
+                            className={classes.addButton}>
+                            Add Rule</button>
+                        }
+                    </div>
+                    }
+                </div>
             </div>
             <div className={classes.gameIdWrapper}>
                 <p className={classes.gameIdLine}>

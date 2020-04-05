@@ -63,6 +63,7 @@ const New = () => {
                 cookie.set('player_name', response.data.newPlayer.player_name);
                 cookie.set('player_id', response.data.newPlayer.player_id);
                 cookie.set('shortId', gameData.shortId);
+                cookie.set('showIntroModal', true);
                 history.push('/play');
             }
 
@@ -106,7 +107,7 @@ const New = () => {
                     </div>
                     
                     <div className={classes.formItem}>
-                         <button className={classes.formButton} type='submit'>Join</button>
+                         <button className={classes.formButton} type='submit'>Start</button>
                     </div>
                 </form>
             }

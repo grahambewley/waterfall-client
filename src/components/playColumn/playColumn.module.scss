@@ -5,6 +5,9 @@
     padding: 4rem 3rem;
     position: relative;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .closeSidebar {
     display: none;
@@ -78,7 +81,7 @@
     padding: 1rem;
     font-size: 2rem;
     border: 1px solid rgba(0,0,0,.2);
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     background-color: #fafafa;
 }
 .smallButtonWrapper {
@@ -86,7 +89,7 @@
 }
 .addSmallButton {
     font-size: 1.4rem;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     border: 1px solid rgba(0,0,0,.2);
     width: 6rem;
     height: 3rem;

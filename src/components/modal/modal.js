@@ -3,13 +3,18 @@ import classes from './modal.module.scss';
 
 const Modal = ({ modalContent }) => {
 
-    const { header, text, affirmative, negative, normal } = modalContent;
+    const { header, text, gameId, affirmative, negative, normal } = modalContent;
 
     return (   
         <div className={classes.backdrop}>
             <div className={classes.modal}>
                 <h2 className={classes.modal__header}>{header}</h2>
                 <p className={classes.modal__text}>{text}</p>
+                { gameId && 
+                <p className={classes.gameIdLine}>
+                    <span className={classes.gameIdLabel}>Game ID: </span>
+                    <span className={classes.gameId}>{gameId}</span>
+                </p> }
 
                 <div className={classes.modal__actions}>
                     { normal && <button className={classes.modal__normalAction} onClick={normal.action}>{normal.text}</button> }

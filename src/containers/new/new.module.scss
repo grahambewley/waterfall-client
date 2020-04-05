@@ -28,7 +28,7 @@
     font-size: 1.8rem;
     width: 30rem;
     padding: 1rem;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     border: 1px solid rgba(0,0,0,.1);
 }
 .formButton {
@@ -36,7 +36,10 @@
     padding: 1rem 3rem;
     font-size: 1.8rem;
     border: 1px solid rgba(0,0,0,.2);
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     background-color: #e4f3fd;
     margin-top: 1rem;
+    background-color: var(--color-blue);
+    color: rgba(255,255,255,.9);
+    font-weight: bold;
 }
