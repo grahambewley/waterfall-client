@@ -24,6 +24,8 @@ const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn }) => {
         { gameStatus.lastPulledCard ? 
         <div className={classes.lastPulledWrapper}>
             <p className={classes.lastPulledCardOutcome}>{ gameStatus.lastPulledCardOutcome }</p>
+            <p className={classes.lastPulledCardInstruction}>{ gameStatus.lastPulledCardInstruction }</p>
+            
             <img src={cards[gameStatus.lastPulledCard]} alt={`card ${gameStatus.lastPulledCard}`} className={classes.lastPulledCardImage}/>
         </div>
         : null }

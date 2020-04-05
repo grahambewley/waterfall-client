@@ -35,8 +35,14 @@
 .lastPulledCardOutcome {
     font-size: 2.4rem;
     font-weight: bold;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     text-align: center;
+}
+.lastPulledCardInstruction {
+    margin: 0 0 2rem 0;
+    text-align: center;
+    font-size: 2rem;
+
 }
 .playerTurnWrapper {
     display: flex;
