@@ -93,7 +93,12 @@ const Play = () => {
 
             const randomIndex = Math.floor(Math.random() * gameStatus.unplayedCards.length);
             const pulledCard = gameStatus.unplayedCards[randomIndex];
-            socket.emit('takeTurn', { shortId: gameStatus.shortId, player_id: playerId, pulledCard });
+            socket.emit('takeTurn', { 
+                shortId: gameStatus.shortId, 
+                player_id: playerId, 
+                pulledCard,
+                gameMode: gameStatus.mode
+            });
         } 
     }
 

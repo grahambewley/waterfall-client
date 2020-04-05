@@ -19,6 +19,7 @@ const New = () => {
         //document.getElementById('createGameForm').reset();
 
         const gameName = e.target.elements.gameName.value;
+        const gameMode = e.target.elements.gameMode.value;
         const password = e.target.elements.gamePassword.value;
 
         try {
@@ -26,6 +27,7 @@ const New = () => {
             const url = `${baseUrl}/createGame`;
             const payload = {
                 gameName,
+                gameMode,
                 password
             };
             const response = await axios.post(url, payload);
@@ -72,7 +74,6 @@ const New = () => {
         } finally {
             setFormDisabled(false);
         }
-
     }
 
     return (
@@ -84,6 +85,13 @@ const New = () => {
                     <div className={classes.formItem}>
                         <label className={classes.formLabel} htmlFor='gameName'>Game Name</label>
                         <input className={classes.formInput} name='gameName' type='text' placeholder='i.e. Happy Hour Club'/>
+                    </div>
+                    <div className={classes.formItem}>
+                        <label className={classes.formLabel} htmlFor='gamePassword'>Game Rules</label>
+                        <select name='gameMode' className={classes.formSelect}>
+                            <option className={classes.formOption} value='classic'>Classic</option>
+                            <option className={classes.formOption} value='simplified'>Simplified</option>
+                        </select>
                     </div>
                     <div className={classes.formItem}>
                         <label className={classes.formLabel} htmlFor='gamePassword'>Game Password</label>

@@ -24,12 +24,18 @@
     margin-bottom: 1rem;
     margin-left: .5rem;
 }
-.formInput {
+.formInput,
+.formSelect {
     font-size: 1.8rem;
     width: 30rem;
     padding: 1rem;
     border-radius: var(--border-radius);
     border: 1px solid rgba(0,0,0,.1);
+}
+.formSelect {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 .formInput:focus,
 .formButton:focus {
