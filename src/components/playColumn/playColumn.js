@@ -226,16 +226,20 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
             <div className={classes.rulesWrapper}>
                 <h2 className={classes.columnHeader}>Rules:</h2>
                 
-                { gameStatus.rules.map((rule, index) => {
-                    return <p className={classes.rule}>
-                        <span>{ rule }</span>
-                        { isAdmin && 
-                            <span style={{marginLeft: '1rem'}} className={classes.adminControl} onClick={() => removeRuleModal(rule)}>
-                                <FontAwesomeIcon icon={faTimes}/>
-                            </span>
-                        }
-                    </p>;
-                })}
+                {gameStatus.rules.length === 0 ?
+                    <p className={classes.noRules}>No rules yet</p>
+                : 
+                    gameStatus.rules.map((rule, index) => {
+                        return <p className={classes.rule}>
+                            <span>{ rule }</span>
+                            { isAdmin && 
+                                <span style={{marginLeft: '1rem'}} className={classes.adminControl} onClick={() => removeRuleModal(rule)}>
+                                    <FontAwesomeIcon icon={faTimes}/>
+                                </span>
+                            }
+                        </p>;
+                    })}
+                
                 { isAdmin && 
                 <div className={classes.addRuleWrapper}>
                     { showNewRuleInput ?
