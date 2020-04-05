@@ -17,7 +17,7 @@ const Play = () => {
     const [isAdmin, setIsAdmin] = React.useState(false);
     const [showModal, setShowModal] = React.useState(false);
     const [modalContent, setModalContent] = React.useState();
-
+    const [allowTurn, setAllowTurn] = React.useState(true);
     const socket = socketIOClient(baseUrl);
 
     React.useEffect(() => {
@@ -46,7 +46,9 @@ const Play = () => {
     React.useEffect(() => {
         if(gameStatus) {
             console.log("Game status set or updated: ", gameStatus);
-            // When game status updates,
+            // Allow turn taking
+            setAllowTurn(true);
+
             // Find out what turn position you are
             const index = gameStatus.players.findIndex((player) => {
                 return player.player_id === cookie.get('player_id');
@@ -60,31 +62,9 @@ const Play = () => {
         }
     }, [gameStatus]);
 
-    React.useEffect(() => {
-        // On mount, join game using data from cookies
-        const player_id = cookie.get('player_id');
-        const player_name = cookie.get('player_name');
-        const shortId = cookie.get('shortId');
-
-        setPlayerId(player_id);
-
-        socket.emit('join', { shortId, player_id, player_name }, (response) => {
-            if(response.error) {
-                alert(response.error);
-            } else {
-                setGameStatus(response.gameStatus);
-            }
-        });
-
-        // When currentGameStatus is transmitted to client, update game status
-        socket.on("currentGameStatus", gameStatus => {
-            setGameStatus(gameStatus);
-        });
-    }, []);
-
-
     function takeTurn() {
         // Disable pulling of another card
+        setAllowTurn(false);
         
         const randomIndex = Math.floor(Math.random() * gameStatus.unplayedCards.length);
         const pulledCard = gameStatus.unplayedCards[randomIndex];
