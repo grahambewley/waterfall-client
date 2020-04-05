@@ -46,8 +46,6 @@ const Play = () => {
     React.useEffect(() => {
         if(gameStatus) {
             console.log("Game status set or updated: ", gameStatus);
-            // Allow turn taking
-            setAllowTurn(true);
 
             // Find out what turn position you are
             const index = gameStatus.players.findIndex((player) => {
@@ -59,18 +57,22 @@ const Play = () => {
             // and find out if you're an admin
             const isAdmin = gameStatus.players[index].player_isAdmin;
             setIsAdmin(isAdmin);
+
+            // Allow turn taking again
+            setAllowTurn(true);
         }
     }, [gameStatus]);
 
     function takeTurn() {
-        // Disable pulling of another card
-        setAllowTurn(false);
         
-        const randomIndex = Math.floor(Math.random() * gameStatus.unplayedCards.length);
-        const pulledCard = gameStatus.unplayedCards[randomIndex];
-        socket.emit('takeTurn', { shortId: gameStatus.shortId, player_id: playerId, pulledCard });
+        if(allowTurn) {
+            // Disable pulling of another card
+            setAllowTurn(false);
 
-        // re-enable pulling of cards
+            const randomIndex = Math.floor(Math.random() * gameStatus.unplayedCards.length);
+            const pulledCard = gameStatus.unplayedCards[randomIndex];
+            socket.emit('takeTurn', { shortId: gameStatus.shortId, player_id: playerId, pulledCard });
+        } 
     }
 
     function handleShowModal(modalContent) {
