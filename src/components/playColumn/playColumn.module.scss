@@ -27,18 +27,14 @@
     margin-top: 0
 }
 .player {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    margin: 0 0 2rem 0;
 }
 .playerName {
     display: flex;
     align-items: center;
     font-size: 2.2rem;
     line-height: 1;
-    margin: 0 0 .5rem 0;
-    padding: 1rem;
-    border-radius: 8px;
+    margin: 0 0 1rem 0;
 }
 .playerName.yourTurn {
     color: white;
@@ -52,6 +48,24 @@
 }
 .playerName.yourTurn .playerIcon {
     color: white;
+}
+
+.playerAdminRow {
+    display: none;
+}
+.playerAdminRow.open {
+    display: flex;
+}
+.playerAdminButton {
+    flex-basis: 0px;
+    flex-grow: 1;
+    font-size: 1.6rem;
+    padding: .5rem;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: var(--border-radius-sm);
+}
+.playerAdminButton:not(:last-child) {
+    margin-right: .5rem;
 }
 
 .adminControls {
@@ -81,7 +95,7 @@
     padding: 1rem;
     font-size: 2rem;
     border: 1px solid rgba(0,0,0,.2);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-sm);
     background-color: #fafafa;
 }
 .smallButtonWrapper {
@@ -89,7 +103,7 @@
 }
 .addSmallButton {
     font-size: 1.4rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-sm);
     border: 1px solid rgba(0,0,0,.2);
     width: 6rem;
     height: 3rem;

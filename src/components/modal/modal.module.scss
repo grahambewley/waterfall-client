@@ -45,7 +45,7 @@
         padding: 1rem 3rem;
         font-size: 1.8rem;
         border: 1px solid rgba(0,0,0,.2);
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius-sm);
         background-color: #e5e5e5;
     }
 
@@ -54,7 +54,7 @@
         padding: 1rem 3rem;
         font-size: 1.8rem;
         border: 1px solid rgba(0,0,0,.2);
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius-sm);
         background-color: #e5e5e5;
     }
 
@@ -63,8 +63,8 @@
         padding: 1rem 3rem;
         font-size: 1.8rem;
         border: 1px solid rgba(0,0,0,.2);
-        border-radius: var(--border-radius);
-        background-color: #fce0df;
+        border-radius: var(--border-radius-sm);
+        background-color: var(--color-danger-red);
     }
 }
 

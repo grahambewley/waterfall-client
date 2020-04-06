@@ -3,7 +3,7 @@ import baseUrl from '../../utils/baseUrl';
 import axios from 'axios';
 import randomString from 'randomstring';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faQuestionCircle, faThumbsUp, faTimes, faCheck, faUserSlash, faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { faQuestionCircle, faThumbsUp, faTimes, faCheck, faUserSlash, faArrowUp, faArrowDown, faUserEdit } from '@fortawesome/free-solid-svg-icons'
 
 import classes from './playColumn.module.scss';
 
@@ -57,14 +57,6 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
         }
 
         handleShowModal(modalContent);
-    }
-
-    async function movePlayerDown(player_id) {
-        return;
-    }
-
-    async function movePlayerUp(player_id) {
-        return;
     }
 
     async function removePlayer(player_id) {
@@ -146,6 +138,45 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
         }
     }
 
+    function handleTogglePlayerAdmin(e) {
+        if(isAdmin) {
+            const adminRow = e.target.nextSibling;
+            console.log("Admin row is: ", adminRow);
+            adminRow.classList.toggle(classes.open);
+        }
+    }
+
+    async function movePlayerDown(player_id) {
+        const adminRows = document.querySelectorAll(`.${classes.playerAdminRow}`);
+        adminRows.forEach(adminRow => adminRow.classList.remove(classes.open));
+        try {
+            const url = `${baseUrl}/movePlayerDown`;
+            const payload = {
+                shortId: gameStatus.shortId,
+                player_id
+            }
+            const response = await axios.post(url, payload);
+            transmitGameStatus();
+        } catch(error) {
+            alert("Sorry, there was an error moving that player");
+        }
+    }
+    async function movePlayerUp(player_id) {
+        const adminRows = document.querySelectorAll(`.${classes.playerAdminRow}`);
+        adminRows.forEach(adminRow => adminRow.classList.remove(classes.open));
+        try {
+            const url = `${baseUrl}/movePlayerUp`;
+            const payload = {
+                shortId: gameStatus.shortId,
+                player_id
+            }
+            const response = await axios.post(url, payload);
+            transmitGameStatus();
+        } catch(error) {
+            alert("Sorry, there was an error moving that player");
+        }
+    }
+
     return (
         <div className={classes.wrapper} style={ sidebarOpen ? {transform:'translateX(0)'} : null } >
             <div className={classes.closeSidebar} onClick={() => setSidebarOpen(false)}>
@@ -158,14 +189,37 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                         { gameStatus.players.map((player, index) => {
                         return (    
                             <div className={classes.player} key={index}>
-                                <p className={classes.playerName}>
+                                <p className={classes.playerName} onClick={handleTogglePlayerAdmin}>
                                     { player.player_name }
                                     { player.player_isOffline && <FontAwesomeIcon style={{color: '#aaa', fontSize:'1.4rem'}} className={classes.playerIcon} icon={faUserSlash}/>}
                                     { player.player_isQmaster && <FontAwesomeIcon className={classes.playerIcon} icon={faQuestionCircle}/> }
                                     { player.player_isTmaster && <FontAwesomeIcon className={classes.playerIcon} icon={faThumbsUp}/> }
                                 </p>
+                                <div className={classes.playerAdminRow}>
+                                    <button 
+                                        className={classes.playerAdminButton}
+                                        style={{backgroundColor: 'var(--color-light-blue)'}}>
+                                        <FontAwesomeIcon icon={faUserEdit}/>
+                                    </button>
+                                    <button 
+                                        className={classes.playerAdminButton}
+                                        onClick={() => movePlayerDown(player.player_id)}>
+                                        <FontAwesomeIcon icon={faArrowDown}/>
+                                    </button>
+                                    <button 
+                                        className={classes.playerAdminButton}
+                                        onClick={() => movePlayerUp(player.player_id)}>
+                                        <FontAwesomeIcon icon={faArrowUp}/>
+                                    </button>
+                                    <button 
+                                        className={classes.playerAdminButton}
+                                        style={{backgroundColor: 'var(--color-danger-red)'}}
+                                        onClick={() => removePlayerModal(player.player_id, player.player_name)} >
+                                        <FontAwesomeIcon icon={faTimes}/>
+                                    </button>
+                                </div>
 
-                                { isAdmin && 
+                                {/* { isAdmin && 
                                     <div className={classes.adminControls}>
                                         <div className={classes.adminControl} onClick={() => movePlayerDown(player.player_id)}>
                                             <FontAwesomeIcon icon={faArrowDown}/>
@@ -177,7 +231,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                                             <FontAwesomeIcon icon={faTimes}/>
                                         </div>
                                     </div>
-                                }
+                                } */}
                             </div>
                         )
                     })}
@@ -202,7 +256,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                                 </button>
                                 <button 
                                     disabled={formDisabled}
-                                    style={{backgroundColor: 'rgba(219, 22, 47, .2)'}}
+                                    style={{backgroundColor: 'var(--color-danger-red'}}
                                     className={classes.addSmallButton} 
                                     onClick={() => setShowNewPlayerInput(false)}>
                                     <FontAwesomeIcon icon={faTimes}/>

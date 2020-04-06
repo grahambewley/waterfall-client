@@ -5,8 +5,9 @@
   --color-blue: #0f4c75;
   --color-medium-blue: #3282b8;
   --color-light-blue: #bbe1fa;
-
+  --color-danger-red: #f0c6c5;
   --border-radius: 8px;
+  --border-radius-sm: 4px;
 }
 
 *,
