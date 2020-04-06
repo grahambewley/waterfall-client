@@ -7,6 +7,14 @@ import { faWifi } from '@fortawesome/free-solid-svg-icons';
 
 const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn, handleShowModal, hideModal, socketConnected }) => {
 
+    // When the play board mounts, create a new Image for each card, so all cards are pre-loaded
+    React.useEffect(() => {
+        Object.keys(cards).forEach(cardName => {
+            const img = new Image();
+            img.src = cards[cardName];
+        })
+    },[])
+
     function handleCardClick() {
         if(yourTurn || isAdmin) {
             takeTurn();
