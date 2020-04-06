@@ -141,7 +141,6 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
     function handleTogglePlayerAdmin(e) {
         if(isAdmin) {
             const adminRow = e.target.nextSibling;
-            console.log("Admin row is: ", adminRow);
             adminRow.classList.toggle(classes.open);
         }
     }

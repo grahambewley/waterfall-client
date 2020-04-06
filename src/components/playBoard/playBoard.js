@@ -2,8 +2,10 @@ import React from 'react';
 import classes from './playBoard.module.scss';
 import cardBack from './cardback.png';
 import cards from './cardImages';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWifi } from '@fortawesome/free-solid-svg-icons';
 
-const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn, handleShowModal, hideModal}) => {
+const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn, handleShowModal, hideModal, socketConnected }) => {
 
     function handleCardClick() {
         if(yourTurn || isAdmin) {
@@ -46,6 +48,14 @@ const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn, handleShowModal, h
         <div className={classes.playerTurnWrapper}>
             <span className={classes.playerTurn}>{`${gameStatus.players[gameStatus.turnIndex].player_name}'s Turn`}</span>
         </div>
+        { socketConnected === false ?
+        <div className={classes.connectionStatus}>
+            <p className={classes.connectionStatusLine}>
+                <span>Disconnected</span>
+                <FontAwesomeIcon icon={faWifi}/>
+            </p>
+        </div>
+        : null }  
     </div>
     );
 } 

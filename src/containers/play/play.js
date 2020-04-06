@@ -18,6 +18,7 @@ const Play = () => {
     const [showModal, setShowModal] = React.useState(false);
     const [modalContent, setModalContent] = React.useState();
     const [allowTurn, setAllowTurn] = React.useState(true);
+    const [socketConnected, setSocketConnected] = React.useState(true);
     const socket = socketIOClient(baseUrl);
 
     React.useEffect(() => {
@@ -65,6 +66,14 @@ const Play = () => {
 
             handleShowModal(modalContent);
         }
+    }, []);
+
+    // Function to run every second and check socket.io connection status
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setSocketConnected(socket.connected);
+        }, 1000);
+        return () => clearInterval(interval);
     }, []);
 
     React.useEffect(() => {
@@ -129,7 +138,8 @@ const Play = () => {
                     isAdmin={isAdmin}
                     yourTurn={yourTurn}
                     handleShowModal={handleShowModal}
-                    hideModal={hideModal}/>
+                    hideModal={hideModal}
+                    socketConnected={socketConnected}/>
                 <PlayColumn 
                     gameStatus={gameStatus} 
                     sidebarOpen={sidebarOpen}
