@@ -23,7 +23,7 @@ const Start = () => {
                 <Tip title='How to Play'>
                     <p style={{fontWeight: 'bold'}}>How to Play:</p>
                     <p>Start a game.
-                    <br/>Start a video. 
+                    <br/>Start a video call. 
                     <br/>Invite your friends.</p>
                     <p>Cheers!</p>
                 </Tip>
