@@ -71,6 +71,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
             }
             const response = await axios.post(url, payload);
             hideModal();
+            hideAllPlayerAdmin();
             transmitGameStatus();           
         } catch(error) {
             alert("Sorry, there was an error removing that player from the game: ", error);
