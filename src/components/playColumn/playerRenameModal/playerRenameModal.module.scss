@@ -1,0 +1,77 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    z-index: 200;
+}
+
+.modal {
+    background-color: #fafafa;
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(0,0,0,.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,.3);
+    max-width: 600px;
+
+    &__header {
+        font-size: 2.4rem;
+        margin: 0 0 2rem 0;
+        font-weight: 600;
+    }
+
+    &__text {
+        font-size: 1.6rem;
+    }
+
+    &__input {
+        padding: 1rem;
+        font-size: 2rem;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: var(--border-radius-sm);
+        background-color: #fafafa;
+        margin-bottom: 2rem;
+    }
+
+    &__actions {
+        display: flex;
+        //justify-content: flex-end;
+    }
+
+    &__actions button:not(:last-child) {
+        margin-right: 1rem;
+    }
+
+    &__normalAction {
+        cursor: pointer;
+        padding: 1rem 3rem;
+        font-size: 1.8rem;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: var(--border-radius-sm);
+        background-color: #e5e5e5;
+    }
+
+    &__affirmativeAction {
+        cursor: pointer;
+        padding: 1rem 3rem;
+        font-size: 1.8rem;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: var(--border-radius-sm);
+        background-color: #e5e5e5;
+    }
+
+    &__negativeAction {
+        cursor: pointer;
+        padding: 1rem 3rem;
+        font-size: 1.8rem;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: var(--border-radius-sm);
+        background-color: var(--color-danger-red);
+    }
+}

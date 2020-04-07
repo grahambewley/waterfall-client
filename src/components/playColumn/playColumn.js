@@ -4,7 +4,7 @@ import axios from 'axios';
 import randomString from 'randomstring';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuestionCircle, faThumbsUp, faTimes, faCheck, faUserSlash, faArrowUp, faArrowDown, faUserEdit } from '@fortawesome/free-solid-svg-icons'
-
+import PlayerRenameModal from './playerRenameModal/playerRenameModal';
 import classes from './playColumn.module.scss';
 
 const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleShowModal, hideModal, transmitGameStatus }) => {
@@ -13,6 +13,8 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
     const [newOfflinePlayer, setNewOfflinePlayer] = React.useState('');
     const [showNewRuleInput, setShowNewRuleInput] = React.useState(false);
     const [newRule, setNewRule] = React.useState('');
+    const [playerToRename, setPlayerToRename] = React.useState();
+    const [showPlayerRenameModal, setShowPlayerRenameModal] = React.useState(false);
     const [formDisabled, setFormDisabled] = React.useState(false);
 
     function removePlayerModal(player_id, player_name) {
@@ -145,9 +147,13 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
         }
     }
 
+    function renamePlayerModal(player_id) {
+        setPlayerToRename(player_id);
+        setShowPlayerRenameModal(true);
+    }
+
     async function movePlayerDown(player_id) {
-        const adminRows = document.querySelectorAll(`.${classes.playerAdminRow}`);
-        adminRows.forEach(adminRow => adminRow.classList.remove(classes.open));
+        hideAllPlayerAdmin();
         try {
             const url = `${baseUrl}/movePlayerDown`;
             const payload = {
@@ -161,8 +167,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
         }
     }
     async function movePlayerUp(player_id) {
-        const adminRows = document.querySelectorAll(`.${classes.playerAdminRow}`);
-        adminRows.forEach(adminRow => adminRow.classList.remove(classes.open));
+        hideAllPlayerAdmin();
         try {
             const url = `${baseUrl}/movePlayerUp`;
             const payload = {
@@ -176,7 +181,20 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
         }
     }
 
-    return (
+    function hideAllPlayerAdmin() {
+        const adminRows = document.querySelectorAll(`.${classes.playerAdminRow}`);
+        adminRows.forEach(adminRow => adminRow.classList.remove(classes.open));
+    }
+
+    return (<>
+        { showPlayerRenameModal && 
+            <PlayerRenameModal 
+                shortId={gameStatus.shortId} 
+                playerToRename={playerToRename} 
+                hideModal={() => setShowPlayerRenameModal(false)}
+                hidePlayerAdmin={hideAllPlayerAdmin}
+                transmitGameStatus={transmitGameStatus}/>
+        }  
         <div className={classes.wrapper} style={ sidebarOpen ? {transform:'translateX(0)'} : null } >
             <div className={classes.closeSidebar} onClick={() => setSidebarOpen(false)}>
                 <FontAwesomeIcon icon={faTimes} style={{fontSize: '3.5rem', color: 'var(--color-blue'}}/>
@@ -194,10 +212,12 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                                     { player.player_isQmaster && <FontAwesomeIcon className={classes.playerIcon} icon={faQuestionCircle}/> }
                                     { player.player_isTmaster && <FontAwesomeIcon className={classes.playerIcon} icon={faThumbsUp}/> }
                                 </p>
+                                
                                 <div className={classes.playerAdminRow}>
                                     <button 
                                         className={classes.playerAdminButton}
-                                        style={{backgroundColor: 'var(--color-light-blue)'}}>
+                                        style={{backgroundColor: 'var(--color-light-blue)'}}
+                                        onClick={() => renamePlayerModal(player.player_id)}>
                                         <FontAwesomeIcon icon={faUserEdit}/>
                                     </button>
                                     <button 
@@ -217,20 +237,6 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                                         <FontAwesomeIcon icon={faTimes}/>
                                     </button>
                                 </div>
-
-                                {/* { isAdmin && 
-                                    <div className={classes.adminControls}>
-                                        <div className={classes.adminControl} onClick={() => movePlayerDown(player.player_id)}>
-                                            <FontAwesomeIcon icon={faArrowDown}/>
-                                        </div>
-                                        <div className={classes.adminControl} onClick={() => movePlayerUp(player.player_id)}>
-                                            <FontAwesomeIcon icon={faArrowUp}/>
-                                        </div>
-                                        <div className={classes.adminControl} onClick={() => removePlayerModal(player.player_id, player.player_name)}>
-                                            <FontAwesomeIcon icon={faTimes}/>
-                                        </div>
-                                    </div>
-                                } */}
                             </div>
                         )
                     })}
@@ -334,7 +340,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                 <p className={classes.gameIdTip}>(Share this with your friends)</p>
             </div>
         </div>
-    );
+    </>);
 }
 
 export default PlayColumn;
