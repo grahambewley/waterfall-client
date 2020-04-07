@@ -10,7 +10,7 @@ const New = () => {
     const [formDisabled, setFormDisabled] = React.useState(false);
     const [gameData, setGameData] = React.useState();
     const [playerName, setPlayerName] = React.useState('');
-
+    
     const history = useHistory();
 
     async function createGame(e) {
@@ -76,7 +76,8 @@ const New = () => {
         }
     }
 
-    return (
+    return ( <>
+
         <div className={classes.wrapper}>
             <h1 className={classes.header}>Start New Game</h1>
 
@@ -120,7 +121,7 @@ const New = () => {
                 </form>
             }
         </div>
-    )
+    </> )
 }
 
 export default New;

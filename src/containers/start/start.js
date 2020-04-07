@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './start.module.scss';
-
+import Tip from '../../components/tip/tip';
 
 const Start = () => {
     return(<>
@@ -15,7 +15,19 @@ const Start = () => {
             <Link to="/new">
                 <button className={ classes.startButton }>Start New Game</button>
             </Link>
-            <span role='img' aria-label='beer glasses' style={{fontSize: '6rem'}}>&#127867;</span>
+            <span 
+                role='img' 
+                aria-label='beer glasses' 
+                style={{fontSize: '6rem'}}>&#127867;</span>
+            <div className={classes.tipWrapper}>
+                <Tip title='How to Play'>
+                    <p style={{fontWeight: 'bold'}}>How to Play:</p>
+                    <p>Start a game.
+                    <br/>Start a video. 
+                    <br/>Invite your friends.</p>
+                    <p>Cheers!</p>
+                </Tip>
+            </div>
         </div>
     </>)
 }
