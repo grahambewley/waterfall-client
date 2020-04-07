@@ -4,7 +4,7 @@
     border-left: 3px solid rgba(0,0,0,.01);
     padding: 4rem 3rem;
     position: relative;
-    overflow-y: scroll;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -14,7 +14,13 @@
 .closeSidebar {
     display: none;
 }
+.gameNameWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .gameName {
+    display: inline-block;
     margin-bottom: 2rem;
 }
 
@@ -186,6 +192,7 @@
         right: 0;
         transform: translateX(100%);
         transition: all .45s;
+        padding-top: 6rem;
     }
     .closeSidebar {
         display: block;

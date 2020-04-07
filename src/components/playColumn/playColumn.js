@@ -5,6 +5,9 @@ import randomString from 'randomstring';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuestionCircle, faThumbsUp, faTimes, faCheck, faUserSlash, faArrowUp, faArrowDown, faUserEdit } from '@fortawesome/free-solid-svg-icons'
 import PlayerRenameModal from './playerRenameModal/playerRenameModal';
+import Tip from '../tip/tip';
+import ClassicRules from '../../components/rules/classicRules';
+import SimplifiedRules from '../../components/rules/simplifiedRules';
 import classes from './playColumn.module.scss';
 
 const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleShowModal, hideModal, transmitGameStatus }) => {
@@ -196,12 +199,21 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                 hidePlayerAdmin={hideAllPlayerAdmin}
                 transmitGameStatus={transmitGameStatus}/>
         }  
+
         <div className={classes.wrapper} style={ sidebarOpen ? {transform:'translateX(0)'} : null } >
+            
             <div className={classes.closeSidebar} onClick={() => setSidebarOpen(false)}>
                 <FontAwesomeIcon icon={faTimes} style={{fontSize: '3.5rem', color: 'var(--color-blue'}}/>
             </div>
             <div>
-                <h1 className={classes.gameName}>{gameStatus.name}</h1>
+                <div className={classes.gameNameWrapper}>
+                    <h1 className={classes.gameName}>{gameStatus.name}</h1>
+                    <div style={{display:'inline-block'}}>
+                        <Tip title='Rules'>
+                            { gameStatus.mode === 'classic' ? <ClassicRules/> : <SimplifiedRules /> }
+                        </Tip>
+                    </div>
+                </div>
                 <div className={classes.playersWrapper}>
                     <h2 className={classes.columnHeader}>Players:</h2>
                         { gameStatus.players.map((player, index) => {

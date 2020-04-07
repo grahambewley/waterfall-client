@@ -129,7 +129,7 @@ const Play = () => {
             
             { showModal && <Modal modalContent={modalContent} /> }
             <div className={classes.openSidebar} onClick={ () => setSidebarOpen(true) } >
-                <FontAwesomeIcon icon={faBars} style={{fontSize: '3.5rem'}}/>
+                <FontAwesomeIcon icon={faBars} style={{fontSize: '3.5rem', color: 'var(--color-blue'}}/>
             </div>
             { gameStatus ? <>
                 <PlayBoard 
