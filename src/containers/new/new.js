@@ -84,7 +84,7 @@ const New = () => {
                 <form disabled={formDisabled} className={classes.form} id='createGameForm' onSubmit={createGame}>
                     <div className={classes.formItem}>
                         <label className={classes.formLabel} htmlFor='gameName'>Game Name</label>
-                        <input className={classes.formInput} name='gameName' type='text' placeholder='i.e. Happy Hour Club'/>
+                        <input className={classes.formInput} name='gameName' type='text' placeholder='e.g. Happy Hour Club'/>
                     </div>
                     <div className={classes.formItem}>
                         <label className={classes.formLabel} htmlFor='gamePassword'>Game Rules</label>
