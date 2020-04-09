@@ -145,7 +145,8 @@ const Play = () => {
                     setSidebarOpen={setSidebarOpen}
                     isAdmin={isAdmin}
                     handleShowModal={handleShowModal}
-                    hideModal={hideModal}/>
+                    hideModal={hideModal}
+                    transmitGameStatus={transmitGameStatus}/>
                 
             </>
             : <p>Loading...</p>}

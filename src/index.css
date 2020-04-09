@@ -1,10 +1,10 @@
 :root {
+  --color-background: #fafafa;
+  --color-background-accent: #e8e9ea;
+
   --color-text: #1b262c;
   --color-text-medium: #323c41;
   --color-text-light: #5f676b;
-
-  --color-background: #fafafa;
-  --color-background-accent: #e8e9ea;
   
   --color-blue: #0f4c75;
   --color-medium-blue: #3282b8;
@@ -13,6 +13,15 @@
 
   --border-radius: 8px;
   --border-radius-sm: 4px;
+}
+
+[data-theme="dark"] {
+  --color-background: #0a0a0a;
+  --color-background-accent: #e8e9ea;
+
+  --color-text: #1b262c;
+  --color-text-medium: #323c41;
+  --color-text-light: #5f676b;
 }
 
 *,
