@@ -39,7 +39,6 @@ const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn, handleShowModal, h
 
     return (
     <div className={classes.wrapper}>
-        
         <div className={classes.pullCardWrapper} onClick={handleCardClick}>
             <img src={cardBack} className={classes.pullCardImage} alt='playing card back' style={ (yourTurn || isAdmin) ? null : {filter: 'grayscale(100%)'}}/>
             <span className={classes.pullCardRemaining}>{gameStatus.unplayedCards.length} Cards Left</span>

@@ -13,7 +13,7 @@
 }
 
 .modal {
-    background-color: #fafafa;
+    background-color: var(--color-background);
     padding: 3rem;
     border-radius: var(--border-radius);
     border: 1px solid rgba(0,0,0,.1);
@@ -35,7 +35,7 @@
         font-size: 2rem;
         border: 1px solid rgba(0,0,0,.2);
         border-radius: var(--border-radius-sm);
-        background-color: #fafafa;
+        background-color: var(--color-background);
         margin-bottom: 2rem;
     }
 
@@ -54,7 +54,7 @@
         font-size: 1.8rem;
         border: 1px solid rgba(0,0,0,.2);
         border-radius: var(--border-radius-sm);
-        background-color: #e5e5e5;
+        background-color: var(--color-background-accent);
     }
 
     &__affirmativeAction {
@@ -63,7 +63,7 @@
         font-size: 1.8rem;
         border: 1px solid rgba(0,0,0,.2);
         border-radius: var(--border-radius-sm);
-        background-color: #e5e5e5;
+        background-color: var(--color-background-accent);
     }
 
     &__negativeAction {

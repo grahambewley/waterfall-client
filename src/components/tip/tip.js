@@ -8,12 +8,12 @@ const Tip = ({ title, children }) => {
     const [showTipContent, setShowTipContent] = React.useState(false);
 
     return (<>
-        <div 
+        <a 
             className={ title ? classes.tip : classes.tipNoTitle }
             onClick={() => setShowTipContent(true)}>
             <FontAwesomeIcon icon={ title ? faQuestionCircle : faQuestion } style={{ color: '#777'}}/>
             { title && <span className={classes.tip__title}>{ title }</span> }
-        </div>
+        </a>
         
         { showTipContent &&
         <div className={classes.tipContentBackdrop}>

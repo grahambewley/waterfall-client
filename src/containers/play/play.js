@@ -95,7 +95,6 @@ const Play = () => {
     }, [gameStatus]);
 
     function takeTurn() {
-        
         if(allowTurn) {
             // Disable pulling of another card
             setAllowTurn(false);
@@ -146,8 +145,7 @@ const Play = () => {
                     setSidebarOpen={setSidebarOpen}
                     isAdmin={isAdmin}
                     handleShowModal={handleShowModal}
-                    hideModal={hideModal}
-                    transmitGameStatus={transmitGameStatus}/>
+                    hideModal={hideModal}/>
                 
             </>
             : <p>Loading...</p>}

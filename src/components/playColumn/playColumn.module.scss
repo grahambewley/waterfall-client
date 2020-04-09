@@ -1,6 +1,6 @@
 .wrapper {
     grid-column: 2 / span 1;
-    background: var(--color-light-grey);
+    background: var(--color-background-accent);
     border-left: 3px solid rgba(0,0,0,.01);
     padding: 4rem 3rem;
     position: relative;
@@ -82,7 +82,7 @@
 }
 .adminControl {
     font-size: 1.4rem;
-    color: #666;
+    color: var(--color-text-light);
     cursor: pointer;
 }
 .adminControl:not(:last-child) {
@@ -104,7 +104,7 @@
     font-size: 2rem;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: var(--border-radius-sm);
-    background-color: #fafafa;
+    background-color: var(--color-background);
 }
 .smallButtonWrapper {
     grid-row: 2 / span 1;
@@ -131,7 +131,7 @@
     font-size: 1.8rem;
     border: 1px solid rgba(0,0,0,.2);
     border-radius: 200px;
-    background-color: #fafafa;
+    background-color: var(--color-background);
 }
 
 .rulesList {
@@ -140,7 +140,7 @@
 .noRules {
     font-size: 1.6rem;
     font-family: monospace;
-    color: #666;
+    color: var(--color-text-light);
 }
 .rule {
     font-size: 1.6rem;
@@ -150,9 +150,7 @@
 .rule:not(:last-child) {
     margin-bottom: 1rem;
 }
-.gameIdWrapper {
-    
-}
+
 .gameIdLine {
     display: flex;
     align-items: center;
@@ -176,7 +174,7 @@
 }
 .gameIdTip {
     font-size: 1.4rem;
-    color: #666;
+    color: var(--color-text-light);
     font-family: monospace;
     margin: 0;
     text-align: center;
