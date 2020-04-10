@@ -15,7 +15,12 @@ const Start = () => {
     }, []);
 
     return(<>
+        
         <div className={ classes.wrapper }>
+            <span 
+                role='img' 
+                aria-label='beer glasses' 
+                style={{fontSize: '6rem', marginTop: '4rem'}}>&#127867;</span>
             <h1 className={ classes.header }>Waterfall</h1>
             <h2 className={ classes.subhead }>The Drinking Game: Online</h2>
 
@@ -25,10 +30,10 @@ const Start = () => {
             <Link to="/new">
                 <button className={ classes.startButton }>Start New Game</button>
             </Link>
-            <span 
-                role='img' 
-                aria-label='beer glasses' 
-                style={{fontSize: '6rem'}}>&#127867;</span>
+            <div className={classes.shareWrapper}>
+                <div class="fb-share-button" data-href="https://waterfall.beer" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwaterfall.beer%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+            </div>
+            
             <div className={classes.tipWrapper}>
                 <Tip title='How to Play'>
                     <p style={{fontWeight: 'bold'}}>How to Play:</p>
