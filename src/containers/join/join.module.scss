@@ -3,8 +3,24 @@
     flex-direction: column;
     align-items: center;
 }
+
+.goHome {
+    margin-top: 4rem;
+    width: 30rem;
+    display: flex;
+}
+.goHomeButton {
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: .4rem .8rem;
+    border: var(--border-medium);
+    border-radius: var(--border-radius);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    margin-top: 1rem;
+}
 .header {
-    margin-top: 6rem;
+    margin-top: 2rem;
     font-size: 4rem;
 }
 .form {

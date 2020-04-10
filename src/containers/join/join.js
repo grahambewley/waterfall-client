@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import classes from './join.module.scss';
 import baseUrl from '../../utils/baseUrl';
 import axios from 'axios';
@@ -97,6 +97,16 @@ const Join = ({ match }) => {
 
     return (
         <div className={classes.wrapper}>
+            <div className={classes.goHome}>
+                <Link to='/'>
+                    <button className={classes.goHomeButton}>
+                    <span 
+                        role='img' 
+                        aria-label='beer glasses'>&#127867;</span>
+                        Go Home
+                    </button>
+                </Link>
+            </div>
             <h1 className={classes.header}>Join Existing Game</h1>
             <form disabled={formDisabled} className={classes.form} onSubmit={validateGame}>
                 <div className={classes.formItem}>
