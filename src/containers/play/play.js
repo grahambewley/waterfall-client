@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const Play = () => {
+    const [darkMode, setDarkMode] = React.useState(false);
     const [gameStatus, setGameStatus] = React.useState(false);
     const [playerId, setPlayerId] = React.useState();
     const [sidebarOpen, setSidebarOpen] = React.useState(false);
@@ -94,6 +95,14 @@ const Play = () => {
         }
     }, [gameStatus]);
 
+    React.useEffect(() => {
+        if(darkMode) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    }, [darkMode]);
+
     function takeTurn() {
         if(allowTurn) {
             // Disable pulling of another card
@@ -146,7 +155,9 @@ const Play = () => {
                     isAdmin={isAdmin}
                     handleShowModal={handleShowModal}
                     hideModal={hideModal}
-                    transmitGameStatus={transmitGameStatus}/>
+                    transmitGameStatus={transmitGameStatus}
+                    darkMode={darkMode}
+                    toggleDarkMode={() => setDarkMode(!darkMode)}/>
                 
             </>
             : <p>Loading...</p>}

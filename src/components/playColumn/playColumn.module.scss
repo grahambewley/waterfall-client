@@ -44,11 +44,6 @@
     line-height: 1;
     margin: 0 0 1rem 0;
 }
-.playerName.yourTurn {
-    color: white;
-    background-color: var(--color-blue);
-    border: 1px solid rgba(255,255,255,.1);
-}
 .playerIcon {
     font-size: 1.8rem;
     color: var(--color-blue);
@@ -69,7 +64,7 @@
     flex-grow: 1;
     font-size: 1.6rem;
     padding: .5rem;
-    border: 1px solid rgba(0,0,0,.1);
+    border: var(--border-light);
     border-radius: var(--border-radius-sm);
 }
 .playerAdminButton:not(:last-child) {
@@ -102,7 +97,7 @@
     width: 100%;
     padding: 1rem;
     font-size: 2rem;
-    border: 1px solid rgba(0,0,0,.2);
+    border: var(--border-medium);
     border-radius: var(--border-radius-sm);
     background-color: var(--color-background);
 }
@@ -112,7 +107,7 @@
 .addSmallButton {
     font-size: 1.4rem;
     border-radius: var(--border-radius-sm);
-    border: 1px solid rgba(0,0,0,.2);
+    border: var(--border-medium);
     width: 6rem;
     height: 3rem;
 }
@@ -129,9 +124,10 @@
     cursor: pointer;
     padding: .5rem 3rem;
     font-size: 1.8rem;
-    border: 1px solid rgba(0,0,0,.2);
+    border: var(--border-medium);
     border-radius: 200px;
     background-color: var(--color-background);
+    color: var(--color-text-medium);
 }
 
 .rulesList {
@@ -166,11 +162,11 @@
 .gameId {
     font-size: 1.6rem;
     padding: .5rem;
-    background-color: white;
+    background-color: var(--color-background);
     border-radius: 3px;
     font-family: monospace;
     color: red;
-    border: 1px solid rgba(0,0,0,.1);
+    border: var(--border-light);
 }
 .gameIdTip {
     font-size: 1.4rem;
@@ -178,6 +174,17 @@
     font-family: monospace;
     margin: 0;
     text-align: center;
+}
+
+.darkModeToggleWrapper {
+    position: absolute;
+    top: 2.4rem;
+    left: 2.4rem;
+}
+.darkModeToggle {
+    color: var(--color-text-medium);
+    font-size: 2rem;
+    padding: 0;
 }
 
 @media(max-width: 768px) {

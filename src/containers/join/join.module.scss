@@ -29,7 +29,7 @@
     width: 30rem;
     padding: 1rem;
     border-radius: var(--border-radius);
-    border: 1px solid rgba(0,0,0,.1);
+    border: var(--border-light);
 }
 .formInput:focus,
 .formButton:focus {
@@ -39,7 +39,7 @@
     cursor: pointer;
     padding: 1rem 3rem;
     font-size: 1.8rem;
-    border: 1px solid rgba(0,0,0,.2);
+    border: var(--border-medium);
     border-radius: var(--border-radius);
     background-color: var(--color-blue);
     color: rgba(255,255,255,.9);

@@ -3,14 +3,14 @@ import baseUrl from '../../utils/baseUrl';
 import axios from 'axios';
 import randomString from 'randomstring';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faQuestionCircle, faThumbsUp, faTimes, faCheck, faUserSlash, faArrowUp, faArrowDown, faUserEdit } from '@fortawesome/free-solid-svg-icons'
+import { faQuestionCircle, faThumbsUp, faTimes, faCheck, faUserSlash, faArrowUp, faArrowDown, faUserEdit, faAdjust } from '@fortawesome/free-solid-svg-icons'
 import PlayerRenameModal from './playerRenameModal/playerRenameModal';
 import Tip from '../tip/tip';
 import ClassicRules from '../../components/rules/classicRules';
 import SimplifiedRules from '../../components/rules/simplifiedRules';
 import classes from './playColumn.module.scss';
 
-const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleShowModal, hideModal, transmitGameStatus }) => {
+const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleShowModal, hideModal, transmitGameStatus, darkMode, toggleDarkMode }) => {
     
     const [showNewPlayerInput, setShowNewPlayerInput] = React.useState(false);
     const [newOfflinePlayer, setNewOfflinePlayer] = React.useState('');
@@ -351,6 +351,12 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                     <span className={classes.gameId}>{gameStatus.shortId}</span>
                 </p>
                 <p className={classes.gameIdTip}>(Share this with your friends)</p>
+            </div>
+
+            <div className={classes.darkModeToggleWrapper}>
+                <button className={classes.darkModeToggle} onClick={toggleDarkMode}>
+                    <FontAwesomeIcon icon={faAdjust} />
+                </button>
             </div>
         </div>
     </>);
