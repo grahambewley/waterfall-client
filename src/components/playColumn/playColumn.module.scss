@@ -185,6 +185,12 @@
     color: var(--color-text-medium);
     font-size: 2rem;
     padding: 0;
+    background-color: transparent;
+    border: none;
+}
+.darkModeToggle:active,
+.darkModeToggle:focus {
+    outline: none;
 }
 
 @media(max-width: 768px) {
