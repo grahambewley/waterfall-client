@@ -2,8 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './start.module.scss';
 import Tip from '../../components/tip/tip';
+import { initGA, logPageView } from "../../components/googleAnalytics";
 
 const Start = () => {
+
+    React.useEffect(() => {
+        if (!window.GA_INITIALIZED) {
+            initGA()
+            window.GA_INITIALIZED = true
+          }
+          logPageView()
+    }, []);
+
     return(<>
         <div className={ classes.wrapper }>
             <h1 className={ classes.header }>Waterfall</h1>

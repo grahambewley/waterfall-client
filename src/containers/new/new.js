@@ -8,13 +8,23 @@ import cookie from 'js-cookie';
 import Tip from '../../components/tip/tip';
 import ClassicRules from '../../components/rules/classicRules';
 import SimplifiedRules from '../../components/rules/simplifiedRules';
+import { initGA, logPageView } from "../../components/googleAnalytics";
 
 const New = () => {
     const [formDisabled, setFormDisabled] = React.useState(false);
     const [gameData, setGameData] = React.useState();
     const [playerName, setPlayerName] = React.useState('');
     
-    const history = useHistory();
+    const history = useHistory(); 
+
+    React.useEffect(() => {
+        if (!window.GA_INITIALIZED) {
+            initGA()
+            window.GA_INITIALIZED = true
+        }
+        console.log("Logging page view");
+        logPageView();
+    }, [])
 
     async function createGame(e) {
         e.preventDefault();

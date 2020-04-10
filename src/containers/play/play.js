@@ -8,6 +8,7 @@ import PlayColumn from '../../components/playColumn/playColumn';
 import Modal from '../../components/modal/modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { initGA, logPageView } from "../../components/googleAnalytics";
 
 const Play = () => {
     const [darkMode, setDarkMode] = React.useState();
@@ -23,6 +24,12 @@ const Play = () => {
     const socket = socketIOClient(baseUrl);
 
     React.useEffect(() => {
+        if (!window.GA_INITIALIZED) {
+            initGA()
+            window.GA_INITIALIZED = true
+        }
+        logPageView();
+
         // On mount, join game using data from cookies
         const player_id = cookie.get('player_id');
         const player_name = cookie.get('player_name');

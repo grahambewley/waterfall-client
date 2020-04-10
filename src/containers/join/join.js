@@ -5,13 +5,23 @@ import baseUrl from '../../utils/baseUrl';
 import axios from 'axios';
 import randomString from 'randomstring';
 import cookie from 'js-cookie';
+import { initGA, logPageView } from "../../components/googleAnalytics";
 
 const Join = () => {
 
     const [formDisabled, setFormDisabled] = React.useState(false);
 
-    const history = useHistory();
+    const history = useHistory(); 
 
+    React.useEffect(() => {
+        if (!window.GA_INITIALIZED) {
+            initGA()
+            window.GA_INITIALIZED = true
+        }
+        console.log("Logging page view");
+        logPageView();
+    }, [])
+    
     async function validateGame(e) {
         e.preventDefault();
         setFormDisabled(true)
