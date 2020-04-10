@@ -2,7 +2,7 @@
     grid-column: 2 / span 1;
     background: var(--color-background-accent);
     border-left: 3px solid rgba(0,0,0,.01);
-    padding: 4rem 3rem;
+    padding: 6rem 3rem;
     position: relative;
     overflow-y: auto;
     display: flex;
@@ -182,7 +182,7 @@
 .darkModeToggleWrapper {
     position: absolute;
     top: 2.4rem;
-    left: 2.4rem;
+    right: 2.4rem;
 }
 .darkModeToggle {
     color: var(--color-text-medium);
@@ -213,5 +213,9 @@
         position: absolute;
         top: 2.4rem;
         right: 2.4rem;
+    }
+    .darkModeToggleWrapper {
+        left: 2.4rem;
+        right: unset;
     }
 }

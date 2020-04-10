@@ -153,6 +153,8 @@ const Play = () => {
                     yourTurn={yourTurn}
                     handleShowModal={handleShowModal}
                     hideModal={hideModal}
+                    sidebarOpen={sidebarOpen}
+                    hideSidebar={() => setSidebarOpen(false)}
                     socketConnected={socketConnected}/>
                 <PlayColumn 
                     gameStatus={gameStatus} 

@@ -5,7 +5,7 @@ import cards from './cardImages';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWifi } from '@fortawesome/free-solid-svg-icons';
 
-const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn, handleShowModal, hideModal, socketConnected }) => {
+const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn, handleShowModal, hideModal, sidebarOpen, hideSidebar, socketConnected }) => {
 
     // When the play board mounts, create a new Image for each card, so all cards are pre-loaded
     React.useEffect(() => {
@@ -38,7 +38,7 @@ const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn, handleShowModal, h
     }
 
     return (
-    <div className={classes.wrapper}>
+    <div className={classes.wrapper} onClick={() => { if(sidebarOpen) { hideSidebar() }}}>
         <div className={classes.pullCardWrapper} onClick={handleCardClick}>
             <img src={cardBack} className={classes.pullCardImage} alt='playing card back' style={ (yourTurn || isAdmin) ? null : {filter: 'grayscale(100%)'}}/>
             <span className={classes.pullCardRemaining}>{gameStatus.unplayedCards.length} Cards Left</span>

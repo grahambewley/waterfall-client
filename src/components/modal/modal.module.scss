@@ -47,6 +47,7 @@
         border: var(--border-medium);
         border-radius: var(--border-radius-sm);
         background-color: var(--color-background-accent);
+        color: var(--color-text);
     }
 
     &__affirmativeAction {
@@ -56,6 +57,7 @@
         border: var(--border-medium);
         border-radius: var(--border-radius-sm);
         background-color: var(--color-background-accent);
+        color: var(--color-text);
     }
 
     &__negativeAction {
@@ -65,6 +67,7 @@
         border: var(--border-medium);
         border-radius: var(--border-radius-sm);
         background-color: var(--color-danger-red);
+        color: var(--color-text);
     }
 }
 
