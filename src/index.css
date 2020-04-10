@@ -12,6 +12,7 @@
   --color-success-green: #c2f1cb;
   --color-danger-red: #f0c6c5;
 
+  --border-super-light: 1px solid rgba(0,0,0,.05);
   --border-light: 1px solid rgba(0,0,0,.1);
   --border-medium: 1px solid rgba(0,0,0,.2);
 
@@ -34,6 +35,7 @@
   --color-success-green: #328c44;
   --color-danger-red: #b54e4c;
 
+  --border-super-light: 1px solid rgba(255,255,255,.05);
   --border-light: 1px solid rgba(255,255,255,.1);
   --border-medium: 1px solid rgba(255,255,255,.2);
 }
@@ -63,4 +65,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+button {
+  cursor: pointer;
 }

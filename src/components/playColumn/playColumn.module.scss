@@ -1,7 +1,7 @@
 .wrapper {
     grid-column: 2 / span 1;
     background: var(--color-background-accent);
-    border-left: 3px solid rgba(0,0,0,.01);
+    border-left: var(--border-super-light);
     padding: 6rem 3rem;
     position: relative;
     overflow-y: auto;
@@ -36,6 +36,7 @@
 }
 .player {
     margin: 0 0 2rem 0;
+    cursor: pointer;
 }
 .playerName {
     display: flex;

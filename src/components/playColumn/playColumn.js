@@ -229,24 +229,28 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                                 <div className={classes.playerAdminRow}>
                                     <button 
                                         className={classes.playerAdminButton}
+                                        title='Rename player'
                                         style={{backgroundColor: 'var(--color-light-blue)'}}
                                         onClick={() => renamePlayerModal(player.player_id)}>
                                         <FontAwesomeIcon icon={faUserEdit}/>
                                     </button>
                                     <button 
                                         className={classes.playerAdminButton}
+                                        title='Move player down'
                                         style={{backgroundColor: 'var(--color-background)'}}
                                         onClick={() => movePlayerDown(player.player_id)}>
                                         <FontAwesomeIcon icon={faArrowDown}/>
                                     </button>
                                     <button 
                                         className={classes.playerAdminButton}
+                                        title='Move player up'
                                         style={{backgroundColor: 'var(--color-background)'}}
                                         onClick={() => movePlayerUp(player.player_id)}>
                                         <FontAwesomeIcon icon={faArrowUp}/>
                                     </button>
                                     <button 
                                         className={classes.playerAdminButton}
+                                        title='Remove player'
                                         style={{backgroundColor: 'var(--color-danger-red)'}}
                                         onClick={() => removePlayerModal(player.player_id, player.player_name)} >
                                         <FontAwesomeIcon icon={faTimes}/>
@@ -356,7 +360,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
             </div>
 
             <div className={classes.darkModeToggleWrapper}>
-                <button className={classes.darkModeToggle} onClick={toggleDarkMode}>
+                <button className={classes.darkModeToggle} title='Toggle dark mode' onClick={toggleDarkMode}>
                     <FontAwesomeIcon icon={faAdjust} />
                 </button>
             </div>
