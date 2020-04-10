@@ -31,7 +31,11 @@ const Start = () => {
                 <button className={ classes.startButton }>Start New Game</button>
             </Link>
             <div className={classes.shareWrapper}>
-                <div class="fb-share-button" data-href="https://waterfall.beer" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwaterfall.beer%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                <div className="fb-share-button" data-href="https://waterfall.beer" data-layout="button" data-size="large">
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwaterfall.beer%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">
+                        Share
+                    </a>
+                </div>
             </div>
             
             <div className={classes.tipWrapper}>

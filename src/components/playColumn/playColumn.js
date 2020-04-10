@@ -72,7 +72,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                 shortId: gameStatus.shortId,
                 player_id
             }
-            const response = await axios.post(url, payload);
+            await axios.post(url, payload);
             hideModal();
             hideAllPlayerAdmin();
             transmitGameStatus();           
@@ -89,7 +89,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                 shortId: gameStatus.shortId,
                 rule
             }
-            const response = await axios.post(url, payload);
+            await axios.post(url, payload);
 
             hideModal();      
             transmitGameStatus();      
@@ -113,7 +113,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                 player_id,
                 player_isOffline: true
             }
-            const response = await axios.post(url, payload);
+            await axios.post(url, payload);
             setShowNewPlayerInput(false);
             setNewOfflinePlayer('');
             transmitGameStatus();
@@ -133,7 +133,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                 shortId: gameStatus.shortId,
                 rule: newRule
             }
-            const response = await axios.post(url, payload);
+            await axios.post(url, payload);
             setShowNewRuleInput(false);
             setNewRule('');
             transmitGameStatus();
@@ -164,7 +164,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                 shortId: gameStatus.shortId,
                 player_id
             }
-            const response = await axios.post(url, payload);
+            await axios.post(url, payload);
             transmitGameStatus();
         } catch(error) {
             alert("Sorry, there was an error moving that player");
@@ -178,7 +178,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                 shortId: gameStatus.shortId,
                 player_id
             }
-            const response = await axios.post(url, payload);
+            await axios.post(url, payload);
             transmitGameStatus();
         } catch(error) {
             alert("Sorry, there was an error moving that player");
@@ -191,6 +191,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
     }
 
     return (<>
+
         { showPlayerRenameModal && 
             <PlayerRenameModal 
                 shortId={gameStatus.shortId} 
@@ -201,7 +202,7 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
         }  
 
         <div className={classes.wrapper} style={ sidebarOpen ? {transform:'translateX(0)'} : null } >
-            
+
             <div className={classes.closeSidebar} onClick={() => setSidebarOpen(false)}>
                 <FontAwesomeIcon icon={faTimes} style={{fontSize: '3.5rem', color: 'var(--color-blue'}}/>
             </div>
