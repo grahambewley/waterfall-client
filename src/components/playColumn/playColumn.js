@@ -354,10 +354,12 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
             </div>
             <div className={classes.gameIdWrapper}>
                 <p className={classes.gameIdLine}>
-                    <span className={classes.gameIdLabel}>Game ID: </span>
-                    <span className={classes.gameId}>{gameStatus.shortId}</span>
+                    <span className={classes.gameIdLabel}>Share Link:</span>
+                    {/* <span className={classes.gameId}>{gameStatus.shortId}</span> */}
                 </p>
-                <p className={classes.gameIdTip}>(Share this with your friends)</p>
+                
+                <p className={classes.gameIdUrl}>{`waterfall.beer/join/${gameStatus.shortId}`}</p>
+                {/* <p className={classes.gameIdShareLabel}>(Click to Copy)</p> */}
             </div>
 
             <div className={classes.darkModeToggleWrapper}>

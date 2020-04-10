@@ -10,11 +10,16 @@ const Modal = ({ modalContent }) => {
             <div className={classes.modal}>
                 <h2 className={classes.modal__header}>{header}</h2>
                 <p className={classes.modal__text}>{text}</p>
-                { gameId && 
+                { gameId && <>
+                <p className={classes.gameIdLine}>
+                    <span className={classes.gameIdLabel}>Share Link: </span>
+                    <span className={classes.gameId}>{`https://waterfall.beer/join/${gameId}`}</span>
+                </p>
                 <p className={classes.gameIdLine}>
                     <span className={classes.gameIdLabel}>Game ID: </span>
                     <span className={classes.gameId}>{gameId}</span>
-                </p> }
+                </p> 
+                </>}
 
                 <div className={classes.modal__actions}>
                     { normal && <button className={classes.modal__normalAction} onClick={normal.action}>{normal.text}</button> }

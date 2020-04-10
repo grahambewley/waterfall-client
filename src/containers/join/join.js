@@ -7,13 +7,19 @@ import randomString from 'randomstring';
 import cookie from 'js-cookie';
 import { initGA, logPageView } from "../../components/googleAnalytics";
 
-const Join = () => {
+const Join = ({ match }) => {
 
     const [formDisabled, setFormDisabled] = React.useState(false);
+    const [gameId, setGameId] = React.useState();
 
     const history = useHistory(); 
 
     React.useEffect(() => {
+
+        if(match.params.gameId && match.params.gameId.length === 5) {
+            setGameId(match.params.gameId);
+        }
+
         if (!window.GA_INITIALIZED) {
             initGA()
             window.GA_INITIALIZED = true
@@ -95,7 +101,7 @@ const Join = () => {
             <form disabled={formDisabled} className={classes.form} onSubmit={validateGame}>
                 <div className={classes.formItem}>
                     <label className={classes.formLabel} htmlFor='gameId'>Game ID</label>
-                    <input className={classes.formInput} style={{fontFamily: 'monospace'}} name='gameId' type='text' placeholder='5 character code'/>
+                    <input className={classes.formInput} style={{fontFamily: 'monospace'}} name='gameId' type='text' placeholder='5 character code' value={gameId} onChange={(e) => setGameId(e.target.value)}/>
                 </div>
                 <div className={classes.formItem}>
                     <label className={classes.formLabel} htmlFor='gamePassword'>Password</label>

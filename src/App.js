@@ -15,6 +15,7 @@ function App() {
       <Switch>
         <Route path='/start' component={Start}/>
         <Route path='/new' component={New}/>
+        <Route path='/join/:gameId' component={Join} />
         <Route path='/join' component={Join}/>
         <Route path='/play' component={Play}/>
         <Route path='/' component={Start}/>
