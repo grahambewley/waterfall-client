@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const Play = () => {
-    const [darkMode, setDarkMode] = React.useState(false);
+    const [darkMode, setDarkMode] = React.useState();
     const [gameStatus, setGameStatus] = React.useState(false);
     const [playerId, setPlayerId] = React.useState();
     const [sidebarOpen, setSidebarOpen] = React.useState(false);
@@ -27,6 +27,10 @@ const Play = () => {
         const player_id = cookie.get('player_id');
         const player_name = cookie.get('player_name');
         const shortId = cookie.get('shortId');
+
+        if(cookie.get('darkMode') === 'true') {
+            setDarkMode(true);
+        }
 
         setPlayerId(player_id);
 
@@ -98,8 +102,10 @@ const Play = () => {
     React.useEffect(() => {
         if(darkMode) {
             document.documentElement.setAttribute('data-theme', 'dark');
+            cookie.set('darkMode', true);
         } else {
             document.documentElement.setAttribute('data-theme', 'light');
+            cookie.set('darkMode', false);
         }
     }, [darkMode]);
 
