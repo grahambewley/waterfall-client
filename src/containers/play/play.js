@@ -59,7 +59,7 @@ const Play = () => {
 
         if(showIntroModal) {
             const header = "Welcome to your Waterfall game!";
-            const text = `For other players to join your game, you'll need to tell them the password you set. Players can join your game using the link below, by entering your Game ID from the 'Join' page.`;
+            const text = `For other players to join your game, you'll need to give them the Game Password. Players can join your game using the link below, or by entering your Game ID from the 'Join' page.`;
             const gameId = shortId;
             const normal = {
                 action: () => {
