@@ -66,6 +66,7 @@
     padding: .5rem;
     border: var(--border-light);
     border-radius: var(--border-radius-sm);
+    color: var(--color-text);
 }
 .playerAdminButton:not(:last-child) {
     margin-right: .5rem;
@@ -100,6 +101,7 @@
     border: var(--border-medium);
     border-radius: var(--border-radius-sm);
     background-color: var(--color-background);
+    color: var(--color-text);
 }
 .smallButtonWrapper {
     grid-row: 2 / span 1;
@@ -110,6 +112,7 @@
     border: var(--border-medium);
     width: 6rem;
     height: 3rem;
+    color: var(--color-text);
 }
 .addSmallButton:not(:last-child) {
     margin-right: 1rem;

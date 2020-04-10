@@ -235,11 +235,13 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                                     </button>
                                     <button 
                                         className={classes.playerAdminButton}
+                                        style={{backgroundColor: 'var(--color-background)'}}
                                         onClick={() => movePlayerDown(player.player_id)}>
                                         <FontAwesomeIcon icon={faArrowDown}/>
                                     </button>
                                     <button 
                                         className={classes.playerAdminButton}
+                                        style={{backgroundColor: 'var(--color-background)'}}
                                         onClick={() => movePlayerUp(player.player_id)}>
                                         <FontAwesomeIcon icon={faArrowUp}/>
                                     </button>
@@ -267,14 +269,14 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                             <div className={classes.smallButtonWrapper}>
                                 <button 
                                     disabled={formDisabled}
-                                    style={{backgroundColor: 'rgba(122, 229, 130, .2)'}}
+                                    style={{backgroundColor: 'var(--color-success-green)'}}
                                     className={classes.addSmallButton}
                                     onClick={handleAddOfflinePlayer}>
                                     <FontAwesomeIcon icon={faCheck}/>
                                 </button>
                                 <button 
                                     disabled={formDisabled}
-                                    style={{backgroundColor: 'var(--color-danger-red'}}
+                                    style={{backgroundColor: 'var(--color-danger-red)'}}
                                     className={classes.addSmallButton} 
                                     onClick={() => setShowNewPlayerInput(false)}>
                                     <FontAwesomeIcon icon={faTimes}/>
@@ -321,14 +323,14 @@ const PlayColumn = ({ gameStatus, sidebarOpen, setSidebarOpen, isAdmin, handleSh
                             <div className={classes.smallButtonWrapper}>
                                 <button 
                                     disabled={formDisabled}
-                                    style={{backgroundColor: 'rgba(122, 229, 130, .2)'}}
+                                    style={{backgroundColor: 'var(--color-success-green'}}
                                     className={classes.addSmallButton}
                                     onClick={handleAddRule}>
                                     <FontAwesomeIcon icon={faCheck}/>
                                 </button>
                                 <button 
                                     disabled={formDisabled}
-                                    style={{backgroundColor: 'rgba(219, 22, 47, .2)'}}
+                                    style={{backgroundColor: 'var(--color-danger-red)'}}
                                     className={classes.addSmallButton} 
                                     onClick={() => setShowNewRuleInput(false)}>
                                     <FontAwesomeIcon icon={faTimes}/>

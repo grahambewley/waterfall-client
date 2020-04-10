@@ -9,6 +9,7 @@
   --color-blue: #0f4c75;
   --color-medium-blue: #3282b8;
   --color-light-blue: #bbe1fa;
+  --color-success-green: #c2f1cb;
   --color-danger-red: #f0c6c5;
 
   --border-light: 1px solid rgba(0,0,0,.1);
@@ -30,7 +31,8 @@
   --color-blue: #3282b8;
   --color-medium-blue: #3282b8;
   --color-light-blue: #0b3552;
-  --color-danger-red: #f0c6c5;
+  --color-success-green: #328c44;
+  --color-danger-red: #b54e4c;
 
   --border-light: 1px solid rgba(255,255,255,.1);
   --border-medium: 1px solid rgba(255,255,255,.2);
