@@ -5,7 +5,7 @@ import cards from './cardImages';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWifi } from '@fortawesome/free-solid-svg-icons';
 
-const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn, handleShowModal, hideModal, sidebarOpen, hideSidebar, socketConnected }) => {
+const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn, handleShowModal, hideModal, sidebarOpen, hideSidebar, socketConnected, gameOver }) => {
 
     // When the play board mounts, create a new Image for each card, so all cards are pre-loaded
     React.useEffect(() => {
@@ -53,7 +53,9 @@ const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn, handleShowModal, h
         </div>
         : null }
         <div className={classes.playerTurnWrapper}>
-            <span className={classes.playerTurn}>{`${gameStatus.players[gameStatus.turnIndex].player_name}'s Turn`}</span>
+            <span className={classes.playerTurn}>
+                { gameOver ? 'Game Over!' : `${gameStatus.players[gameStatus.turnIndex].player_name}'s Turn` }
+            </span>
         </div>
         { socketConnected === false ?
         <div className={classes.connectionStatus}>

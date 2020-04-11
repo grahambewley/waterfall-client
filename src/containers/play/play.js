@@ -13,6 +13,7 @@ import { initGA, logPageView } from "../../components/googleAnalytics";
 const Play = () => {
     const [darkMode, setDarkMode] = React.useState();
     const [gameStatus, setGameStatus] = React.useState(false);
+    const [gameOver, setGameOver] = React.useState(false);
     const [playerId, setPlayerId] = React.useState();
     const [sidebarOpen, setSidebarOpen] = React.useState(false);
     const [yourTurn, setYourTurn] = React.useState(false);
@@ -89,7 +90,13 @@ const Play = () => {
     }, []);
 
     React.useEffect(() => {
+        
         if(gameStatus) {
+
+            if(gameStatus.unplayedCards.length === 0) {
+                setGameOver(true);
+            }
+
             // Find out what turn position you are
             const index = gameStatus.players.findIndex((player) => {
                 return player.player_id === cookie.get('player_id');
@@ -117,7 +124,7 @@ const Play = () => {
     }, [darkMode]);
 
     function takeTurn() {
-        if(allowTurn) {
+        if(allowTurn && !gameOver) {
             // Disable pulling of another card
             setAllowTurn(false);
 
@@ -162,7 +169,8 @@ const Play = () => {
                     hideModal={hideModal}
                     sidebarOpen={sidebarOpen}
                     hideSidebar={() => setSidebarOpen(false)}
-                    socketConnected={socketConnected}/>
+                    socketConnected={socketConnected}
+                    gameOver={gameOver}/>
                 <PlayColumn 
                     gameStatus={gameStatus} 
                     sidebarOpen={sidebarOpen}
@@ -173,7 +181,6 @@ const Play = () => {
                     transmitGameStatus={transmitGameStatus}
                     darkMode={darkMode}
                     toggleDarkMode={() => setDarkMode(!darkMode)}/>
-                
             </>
             : <p>Loading...</p>}
             
