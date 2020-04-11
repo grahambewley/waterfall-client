@@ -16,6 +16,7 @@ const Play = () => {
     const [showModal, setShowModal] = React.useState(false);
     const [modalContent, setModalContent] = React.useState();
 
+    const [socket, setSocket] = React.useState();
     const [socketConnected, setSocketConnected] = React.useState(true);
     const [gameStatus, setGameStatus] = React.useState(false);
     const [gameOver, setGameOver] = React.useState();
@@ -25,7 +26,7 @@ const Play = () => {
     const [yourTurn, setYourTurn] = React.useState(false);
     const [isAdmin, setIsAdmin] = React.useState(false);
     
-    const socket = socketIOClient(baseUrl);
+    
 
     React.useEffect(() => {
         if (!window.GA_INITIALIZED) {
@@ -45,7 +46,10 @@ const Play = () => {
 
         setPlayerId(player_id);
 
-        socket.emit('join', { shortId, player_id, player_name }, (response) => {
+        const initSocket = socketIOClient(baseUrl);
+        setSocket(initSocket);
+
+        initSocket.emit('join', { shortId, player_id, player_name }, (response) => {
             if(response.error) {
                 alert(response.error);
             } else {
@@ -54,13 +58,13 @@ const Play = () => {
         });
 
         // When currentGameStatus is transmitted to client, update game status
-        socket.on("currentGameStatus", gameStatus => {
+        initSocket.on("currentGameStatus", gameStatus => {
             setGameOver(false);
             setGameStatus(gameStatus);
         });
 
         // When server triggers game over show appropriate components
-        socket.on("gameOver", () => {
+        initSocket.on("gameOver", () => {
             setGameOver(true);
         });
 
@@ -92,11 +96,13 @@ const Play = () => {
 
     // Function to run every second and check socket.io connection status
     React.useEffect(() => {
-        const interval = setInterval(() => {
-            setSocketConnected(socket.connected);
-        }, 1000);
-        return () => clearInterval(interval);
-    }, []);
+        if(socket) {
+            const interval = setInterval(() => {
+                setSocketConnected(socket.connected);
+            }, 1000);
+            return () => clearInterval(interval);
+        }
+    }, [socket]);
 
     React.useEffect(() => {
         if(gameStatus) {
