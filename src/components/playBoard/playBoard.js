@@ -5,7 +5,7 @@ import cards from './cardImages';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWifi } from '@fortawesome/free-solid-svg-icons';
 
-const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn, handleShowModal, hideModal, sidebarOpen, hideSidebar, socketConnected, gameOver }) => {
+const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn, handleShowModal, hideModal, sidebarOpen, hideSidebar, socketConnected, gameOver, handlePlayAgain }) => {
 
     // When the play board mounts, create a new Image for each card, so all cards are pre-loaded
     React.useEffect(() => {
@@ -49,7 +49,17 @@ const PlayBoard = ({ gameStatus, takeTurn, isAdmin, yourTurn, handleShowModal, h
             <p className={classes.lastPulledCardOutcome}>{ gameStatus.lastPulledCardOutcome }</p>
             <p className={classes.lastPulledCardInstruction}>{ gameStatus.lastPulledCardInstruction }</p>
             
-            <img src={cards[gameStatus.lastPulledCard]} alt={`card ${gameStatus.lastPulledCard}`} className={classes.lastPulledCardImage}/>
+            <div className={classes.lastPulledCardImageWrapper}>
+                <img src={cards[gameStatus.lastPulledCard]} alt={`card ${gameStatus.lastPulledCard}`} className={classes.lastPulledCardImage}/>
+                <div className={classes.playAgainWrapper} style={ (gameOver && isAdmin) ? {display: 'block'} : null }>
+                    <h3 className={classes.playAgainHeader}>Play Again?</h3>
+                    <button className={classes.playAgainButton} onClick={handlePlayAgain}>
+                        <span 
+                            role='img' 
+                            aria-label='beer glasses'>&#127867;</span>
+                        Let's Go</button>
+                </div>
+            </div>
         </div>
         : null }
         <div className={classes.playerTurnWrapper}>

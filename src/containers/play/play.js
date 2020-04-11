@@ -12,16 +12,19 @@ import { initGA, logPageView } from "../../components/googleAnalytics";
 
 const Play = () => {
     const [darkMode, setDarkMode] = React.useState();
-    const [gameStatus, setGameStatus] = React.useState(false);
-    const [gameOver, setGameOver] = React.useState(false);
-    const [playerId, setPlayerId] = React.useState();
     const [sidebarOpen, setSidebarOpen] = React.useState(false);
-    const [yourTurn, setYourTurn] = React.useState(false);
-    const [isAdmin, setIsAdmin] = React.useState(false);
     const [showModal, setShowModal] = React.useState(false);
     const [modalContent, setModalContent] = React.useState();
-    const [allowTurn, setAllowTurn] = React.useState(true);
+
     const [socketConnected, setSocketConnected] = React.useState(true);
+    const [gameStatus, setGameStatus] = React.useState(false);
+    const [gameOver, setGameOver] = React.useState();
+    const [playerId, setPlayerId] = React.useState();
+    
+    const [allowTurn, setAllowTurn] = React.useState(true);
+    const [yourTurn, setYourTurn] = React.useState(false);
+    const [isAdmin, setIsAdmin] = React.useState(false);
+    
     const socket = socketIOClient(baseUrl);
 
     React.useEffect(() => {
@@ -52,12 +55,17 @@ const Play = () => {
 
         // When currentGameStatus is transmitted to client, update game status
         socket.on("currentGameStatus", gameStatus => {
+            setGameOver(false);
             setGameStatus(gameStatus);
+        });
+
+        // When server triggers game over show appropriate components
+        socket.on("gameOver", () => {
+            setGameOver(true);
         });
 
         // If intro modal cookie is present (if client created the game), show modal with Game ID
         const showIntroModal = cookie.get('showIntroModal');
-
         if(showIntroModal) {
             const header = "Welcome to your Waterfall game!";
             const text = `For other players to join your game, you'll need to give them the Game Password. Players can join your game using the link below, or by entering your Game ID from the 'Join' page.`;
@@ -79,6 +87,7 @@ const Play = () => {
 
             handleShowModal(modalContent);
         }
+
     }, []);
 
     // Function to run every second and check socket.io connection status
@@ -90,7 +99,6 @@ const Play = () => {
     }, []);
 
     React.useEffect(() => {
-        
         if(gameStatus) {
 
             if(gameStatus.unplayedCards.length === 0) {
@@ -152,6 +160,16 @@ const Play = () => {
         setShowModal(false);
     }
 
+    function handlePlayAgain() {
+        console.log("Handling game over click")
+        if(gameOver) {
+            console.log("Emiting playAgain message");
+            socket.emit('playAgain', {
+                shortId: gameStatus.shortId
+            });
+        }
+    }
+
     return (
         <div className={classes.wrapper}>
             
@@ -170,7 +188,8 @@ const Play = () => {
                     sidebarOpen={sidebarOpen}
                     hideSidebar={() => setSidebarOpen(false)}
                     socketConnected={socketConnected}
-                    gameOver={gameOver}/>
+                    gameOver={gameOver}
+                    handlePlayAgain={handlePlayAgain}/>
                 <PlayColumn 
                     gameStatus={gameStatus} 
                     sidebarOpen={sidebarOpen}
