@@ -74,11 +74,14 @@ const New = () => {
             const response = await axios.post(url, payload);
 
             // If a newPlayer was returned, then store player name and ID in cookies and load game
+            const inTwelveHours = new Date(new Date().getTime() + 12 * 60 * 60 * 1000);
+
             if(response.data.newPlayer) {
-                cookie.set('player_name', response.data.newPlayer.player_name);
-                cookie.set('player_id', response.data.newPlayer.player_id);
-                cookie.set('shortId', gameData.shortId);
-                cookie.set('showIntroModal', true);
+                cookie.set('player_name', response.data.newPlayer.player_name, { expires: inTwelveHours });
+                cookie.set('player_id', response.data.newPlayer.player_id, { expires: inTwelveHours });
+                cookie.set('shortId', gameData.shortId, { expires: inTwelveHours });
+                cookie.set('gameName', gameData.name, { expires: inTwelveHours });
+                cookie.set('showIntroModal', true, { expires: inTwelveHours });
                 history.push('/play');
             }
 

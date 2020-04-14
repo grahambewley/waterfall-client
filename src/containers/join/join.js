@@ -51,7 +51,8 @@ const Join = ({ match }) => {
         
             // if response.data.gameData ... addPlayerToGame
             if(response.data.gameData) {
-                addPlayerToGame(shortId, player_name)
+                
+                addPlayerToGame(shortId, player_name, response.data.gameData.name);
             } else {
                 alert(response.data.error);
             }
@@ -63,7 +64,7 @@ const Join = ({ match }) => {
         
     }
 
-    async function addPlayerToGame(shortId, player_name) {
+    async function addPlayerToGame(shortId, player_name, gameName) {
         setFormDisabled(true);
         
         // generate random string to identify this user
@@ -80,10 +81,13 @@ const Join = ({ match }) => {
             const response = await axios.post(url, payload);
 
             // If a newPlayer was returned, then store player name and ID in cookies and load game
+            const inTwelveHours = new Date(new Date().getTime() + 12 * 60 * 60 * 1000);
+            
             if(response.data.newPlayer) {
-                cookie.set('player_name', player_name);
-                cookie.set('player_id', player_id);
-                cookie.set('shortId', shortId);
+                cookie.set('player_name', player_name, { expires: inTwelveHours });
+                cookie.set('player_id', player_id, { expires: inTwelveHours });
+                cookie.set('shortId', shortId, { expires: inTwelveHours });
+                cookie.set('gameName', gameName, { expires: inTwelveHours });
                 history.push('/play');
             }
 
