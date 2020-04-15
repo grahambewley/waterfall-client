@@ -1,4 +1,5 @@
 import React from 'react';
+import { Like } from 'react-facebook';
 import classes from './playBoard.module.scss';
 import cardBack from './cardback.png';
 import cards from './cardImages';
@@ -57,6 +58,15 @@ const PlayBoard = ({
         }
       }}
     >
+      <div className={classes.fbLikeDesktop}>
+        <Like
+          href="https://www.waterfall.beer"
+          showFaces
+          layout="button_count"
+          size="large"
+          share
+        />
+      </div>
       <div className={classes.pullCardWrapper} onClick={handleCardClick}>
         <img
           src={cardBack}

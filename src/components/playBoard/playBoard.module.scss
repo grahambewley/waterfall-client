@@ -1,133 +1,141 @@
 .wrapper {
-    grid-column: 1 / span 1;
-    display: grid;
-    grid-template-rows: min-content 1fr;
-    position: relative;
+  grid-column: 1 / span 1;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  position: relative;
+}
+.fbLikeDesktop {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 .pullCardWrapper {
-    margin: 2rem;
-    width: fit-content;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  margin: 2rem;
+  width: fit-content;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .pullCardImage {
-    width: 12rem;
+  width: 12rem;
 }
-[data-theme="dark"] .pullCardImage {
-    opacity: .8;
+[data-theme='dark'] .pullCardImage {
+  opacity: 0.8;
 }
 .pullCardRemaining {
-    font-size: 1.2rem;
-    margin-top: .5rem;
-    font-weight: bold;
-    letter-spacing: .5px;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
 .lastPulledWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .lastPulledCardOutcome {
-    font-size: 2.4rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    text-align: center;
+  font-size: 2.4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 .lastPulledCardInstruction {
-    margin: 0 0 2rem 0;
-    text-align: center;
-    font-size: 2rem;
+  margin: 0 0 2rem 0;
+  text-align: center;
+  font-size: 2rem;
 }
 .lastPulledCardImageWrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .lastPulledCardImage {
-    width: 18rem;
+  width: 18rem;
 }
-[data-theme="dark"] .lastPulledCardImage {
-    opacity: .8;
+[data-theme='dark'] .lastPulledCardImage {
+  opacity: 0.8;
 }
 .playAgainWrapper {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: var(--border-radius);
-    border: var(--border-light);
-    padding: 2rem 4rem;
-    background-color: var(--color-background-accent);
-    width: max-content;
-    box-shadow: 0 2px 6px rgba(0,0,0,.2);
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: var(--border-radius);
+  border: var(--border-light);
+  padding: 2rem 4rem;
+  background-color: var(--color-background-accent);
+  width: max-content;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 .playAgainHeader {
-    color: var(--color-text-medium);
-    font-size: 2.4rem;
-    text-align: center;
-    margin: 0 0 2rem 0;
+  color: var(--color-text-medium);
+  font-size: 2.4rem;
+  text-align: center;
+  margin: 0 0 2rem 0;
 }
 .playAgainButton {
-    background-color: var(--color-blue);
-    color: var(--color-background);
-    padding: 1rem 3rem;
-    border-radius: 200px;
-    font-size: 2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: var(--border-medium);
-    transition: all .25s;
+  background-color: var(--color-blue);
+  color: var(--color-background);
+  padding: 1rem 3rem;
+  border-radius: 200px;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: var(--border-medium);
+  transition: all 0.25s;
 }
 .playAgainButton:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+  transform: translateY(-2px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 .playerTurnWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 .playerTurn {
-    padding: 1rem 2rem;
-    margin: 2rem 0;
-    background-color: var(--color-light-blue);
-    border-radius: 100px;
-    font-size: 2rem;
+  padding: 1rem 2rem;
+  margin: 2rem 0;
+  background-color: var(--color-light-blue);
+  border-radius: 100px;
+  font-size: 2rem;
 }
 .connectionStatus {
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: center;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
 }
 .connectionStatusLine {
-    margin: 0;
-    display: flex;
-    align-items: center;
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: var(--color-text-light);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--color-text-light);
 }
 .connectionStatusLine span {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
-@media(max-width: 768px) {
-    .wrapper {
-        height: 100%;
-    }
-    .pullCardImage {
-        width: 8rem;
-    }
-    .lastPulledCardImage {
-        width: 50%;
-    }
-    .lastPulledCardOutcome {
-        margin: 2rem;
-    }
+@media (max-width: 768px) {
+  .wrapper {
+    height: 100%;
+  }
+  .fbLikeDesktop {
+    display: none;
+  }
+  .pullCardImage {
+    width: 8rem;
+  }
+  .lastPulledCardImage {
+    width: 50%;
+  }
+  .lastPulledCardOutcome {
+    margin: 2rem;
+  }
 }

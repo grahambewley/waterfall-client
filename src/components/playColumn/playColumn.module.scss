@@ -1,243 +1,235 @@
 .wrapper {
-    grid-column: 2 / span 1;
-    background: var(--color-background-accent);
-    border-left: var(--border-super-light);
-    padding: 6rem 3rem;
-    position: relative;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    z-index: 10;
+  grid-column: 2 / span 1;
+  background: var(--color-background-accent);
+  border-left: var(--border-super-light);
+  padding: 6rem 3rem 3rem 3rem;
+  position: relative;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 10;
 }
 
 .closeSidebar {
-    display: none;
+  display: none;
 }
 .gameNameWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .gameName {
-    display: inline-block;
-    margin-bottom: 2rem;
+  display: inline-block;
+  margin-bottom: 2rem;
 }
 
 .playersWrapper,
 .rulesWrapper {
-    margin-bottom: 4rem;
+  margin-bottom: 4rem;
 }
 .columnHeader {
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 0
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0;
 }
 .player {
-    margin: 0 0 2rem 0;
-    cursor: pointer;
+  margin: 0 0 2rem 0;
+  cursor: pointer;
 }
 .playerName {
-    display: flex;
-    align-items: center;
-    font-size: 2.2rem;
-    line-height: 1;
-    margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  font-size: 2.2rem;
+  line-height: 1;
+  margin: 0 0 1rem 0;
 }
 .playerIcon {
-    font-size: 1.8rem;
-    color: var(--color-blue);
-    margin-left: 1rem;
+  font-size: 1.8rem;
+  color: var(--color-blue);
+  margin-left: 1rem;
 }
 .playerName.yourTurn .playerIcon {
-    color: white;
+  color: white;
 }
 
 .playerAdminRow {
-    display: none;
+  display: none;
 }
 .playerAdminRow.open {
-    display: flex;
+  display: flex;
 }
 .playerAdminButton {
-    flex-basis: 0px;
-    flex-grow: 1;
-    font-size: 1.6rem;
-    padding: .5rem;
-    border: var(--border-light);
-    border-radius: var(--border-radius-sm);
-    color: var(--color-text);
+  flex-basis: 0px;
+  flex-grow: 1;
+  font-size: 1.6rem;
+  padding: 0.5rem;
+  border: var(--border-light);
+  border-radius: var(--border-radius-sm);
+  color: var(--color-text);
 }
 .playerAdminButton:not(:last-child) {
-    margin-right: .5rem;
+  margin-right: 0.5rem;
 }
 
 .adminControls {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .adminControl {
-    font-size: 1.4rem;
-    color: var(--color-text-light);
-    cursor: pointer;
+  font-size: 1.4rem;
+  color: var(--color-text-light);
+  cursor: pointer;
 }
 .adminControl:not(:last-child) {
-    margin-right: .5rem;
+  margin-right: 0.5rem;
 }
 .addRuleWrapper {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
 .addInputWrapper,
 .addRuleInputWrapper {
-    display: grid;
-    grid-template-rows: min-content min-content;
-    grid-gap: 1rem;
+  display: grid;
+  grid-template-rows: min-content min-content;
+  grid-gap: 1rem;
 }
 .addInput {
-    grid-row: 1 / span 1;
-    width: 100%;
-    padding: 1rem;
-    font-size: 2rem;
-    border: var(--border-medium);
-    border-radius: var(--border-radius-sm);
-    background-color: var(--color-background);
-    color: var(--color-text);
+  grid-row: 1 / span 1;
+  width: 100%;
+  padding: 1rem;
+  font-size: 2rem;
+  border: var(--border-medium);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 .smallButtonWrapper {
-    grid-row: 2 / span 1;
+  grid-row: 2 / span 1;
 }
 .addSmallButton {
-    font-size: 1.4rem;
-    border-radius: var(--border-radius-sm);
-    border: var(--border-medium);
-    width: 6rem;
-    height: 3rem;
-    color: var(--color-text);
+  font-size: 1.4rem;
+  border-radius: var(--border-radius-sm);
+  border: var(--border-medium);
+  width: 6rem;
+  height: 3rem;
+  color: var(--color-text);
 }
 .addSmallButton:not(:last-child) {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 .addInput:focus,
 .addButton:focus,
 .addSmallButton:focus {
-    outline: none;
+  outline: none;
 }
 .addButton {
-    width: 100%;
-    cursor: pointer;
-    padding: .5rem 3rem;
-    font-size: 1.8rem;
-    border: var(--border-medium);
-    border-radius: 200px;
-    background-color: var(--color-background);
-    color: var(--color-text-medium);
+  width: 100%;
+  cursor: pointer;
+  padding: 0.5rem 3rem;
+  font-size: 1.8rem;
+  border: var(--border-medium);
+  border-radius: 200px;
+  background-color: var(--color-background);
+  color: var(--color-text-medium);
 }
 
 .rulesList {
-    padding-left: 2rem;
+  padding-left: 2rem;
 }
 .noRules {
-    font-size: 1.6rem;
-    font-family: monospace;
-    color: var(--color-text-light);
+  font-size: 1.6rem;
+  font-family: monospace;
+  color: var(--color-text-light);
 }
 .rule {
-    font-size: 1.6rem;
-    display: flex;
-    justify-content: space-between;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: space-between;
 }
 .rule:not(:last-child) {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .gameIdWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .gameIdLine {
-    display: flex;
-    align-items: center;
-    justify-content: center;;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .gameIdLabel {
-    font-size: 1.4rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-right: 1rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-right: 1rem;
 }
 .gameId {
-    font-size: 1.6rem;
-    border-radius: 3px;
-    font-family: monospace;
-    color: var(--color-text-medium);
-}
-.gameIdShareLabel {
-    font-size: 1.4rem;
-    color: var(--color-text-light);
-    font-family: monospace;
-    margin: 0;
-    text-align: center;
+  font-size: 1.6rem;
+  border-radius: 3px;
+  font-family: monospace;
+  color: var(--color-text-medium);
 }
 .gameIdUrl {
-    text-align: center;
-    font-size: 1.4rem;
-    padding: .5rem;
-    margin: 0;
-    display: inline-block;
-    background-color: var(--color-background);
-    border-radius: 3px;
-    font-family: monospace;
-    color: red;
-    border: var(--border-light);
+  text-align: center;
+  font-size: 1.4rem;
+  padding: 0.5rem;
+  margin: 0;
+  display: inline-block;
+  background-color: var(--color-background);
+  border-radius: 3px;
+  font-family: monospace;
+  color: red;
+  border: var(--border-light);
 }
-.gameIdTip {
-    font-size: 1.4rem;
-    color: var(--color-text-light);
-    font-family: monospace;
-    margin: 0;
-    text-align: center;
+.fbLikeMobile {
+  display: none;
+  margin-top: 2rem;
 }
-
 .darkModeToggleWrapper {
-    position: absolute;
-    top: 2.4rem;
-    right: 2.4rem;
+  position: absolute;
+  top: 2.4rem;
+  right: 2.4rem;
 }
 .darkModeToggle {
-    color: var(--color-text-medium);
-    font-size: 2rem;
-    padding: 0;
-    background-color: transparent;
-    border: none;
+  color: var(--color-text-medium);
+  font-size: 2rem;
+  padding: 0;
+  background-color: transparent;
+  border: none;
 }
 .darkModeToggle:active,
 .darkModeToggle:focus {
-    outline: none;
+  outline: none;
 }
 
-@media(max-width: 768px) {
-    .wrapper {
-        position: absolute;
-        grid-column: none;
-        width: 80%;
-        height: 100%;
-        top: 0;
-        right: 0;
-        transform: translateX(100%);
-        transition: all .45s;
-        padding-top: 7rem;
-    }
-    .closeSidebar {
-        display: block;
-        position: absolute;
-        top: 2.4rem;
-        right: 2.4rem;
-    }
-    .darkModeToggleWrapper {
-        left: 2.4rem;
-        right: unset;
-    }
+@media (max-width: 768px) {
+  .wrapper {
+    position: absolute;
+    grid-column: none;
+    width: 80%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    transition: all 0.45s;
+    padding-top: 7rem;
+  }
+  .closeSidebar {
+    display: block;
+    position: absolute;
+    top: 2.4rem;
+    right: 2.4rem;
+  }
+  .fbLikeMobile {
+    display: block;
+  }
+  .darkModeToggleWrapper {
+    left: 2.4rem;
+    right: unset;
+  }
 }
