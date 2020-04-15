@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Like } from 'react-facebook';
 import classes from './start.module.scss';
 import Tip from '../../components/tip/tip';
 import { initGA, logPageView } from '../../components/googleAnalytics';
@@ -23,50 +24,41 @@ const Start = () => {
   return (
     <>
       <div className={classes.wrapper}>
-        <span
-          role="img"
-          aria-label="beer glasses"
-          style={{ fontSize: '6rem', marginTop: '4rem' }}
-        >
-          &#127867;
-        </span>
-        <h1 className={classes.header}>Waterfall</h1>
-        <h2 className={classes.subhead}>The Drinking Game: Online</h2>
-
-        {gameInProgress && (
-          <>
-            <Link to="/play">
-              <button className={classes.rejoinButton}>{`Rejoin "${cookie.get(
-                'gameName'
-              )}"`}</button>
-            </Link>
-            <span className={classes.rejoinOr}>OR</span>
-          </>
-        )}
-        <Link to="/join">
-          <button className={classes.joinButton}>Join Game</button>
-        </Link>
-        <Link to="/new">
-          <button className={classes.startButton}>Start New Game</button>
-        </Link>
-        <div className={classes.shareWrapper}>
-          <div
-            className="fb-share-button"
-            data-href="https://waterfall.beer"
-            data-layout="button"
-            data-size="large"
+        <div className={classes.mainWrapper}>
+          <span
+            role="img"
+            aria-label="beer glasses"
+            style={{ fontSize: '6rem', marginTop: '4rem' }}
           >
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwaterfall.beer%2F&amp;src=sdkpreparse"
-              className="fb-xfbml-parse-ignore"
-            >
-              Share
-            </a>
-          </div>
-        </div>
+            &#127867;
+          </span>
+          <h1 className={classes.header}>Waterfall</h1>
+          <h2 className={classes.subhead}>The Drinking Game: Online</h2>
 
+          {gameInProgress && (
+            <>
+              <Link to="/play">
+                <button className={classes.rejoinButton}>{`Rejoin "${cookie.get(
+                  'gameName'
+                )}"`}</button>
+              </Link>
+              <span className={classes.rejoinOr}>OR</span>
+            </>
+          )}
+          <Link to="/join">
+            <button className={classes.joinButton}>Join Game</button>
+          </Link>
+          <Link to="/new">
+            <button className={classes.startButton}>Start New Game</button>
+          </Link>
+          <Like
+            href="https://www.waterfall.beer"
+            showFaces
+            layout="button_count"
+            size="large"
+            share
+          />
+        </div>
         <div className={classes.tipWrapper}>
           <Tip title="How to Play">
             <p style={{ fontWeight: 'bold' }}>How to Play:</p>
