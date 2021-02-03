@@ -59,7 +59,7 @@ const Start = () => {
             share
           />
         </div>
-        <div className={classes.tipWrapper}>
+        <div className={classes.footerWrapper}>
           <Tip title="How to Play">
             <p style={{ fontWeight: 'bold' }}>How to Play:</p>
             <p>
@@ -71,6 +71,10 @@ const Start = () => {
             </p>
             <p>Cheers!</p>
           </Tip>
+
+          <p className={classes.footerLink}>
+            <a href="https://grahambewley.com">Graham Bewley</a> made this
+          </p>
         </div>
       </div>
     </>
